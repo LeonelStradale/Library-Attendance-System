@@ -42,8 +42,7 @@
                                 <!-- Checkbox: Remember me -->
                                 <div class="flex items-center h-5">
                                     <label for="remember_me" class="flex items-center">
-                                        <x-checkbox id="remember_me" name="remember" aria-describedby="remember"
-                                            required="" />
+                                        <x-checkbox id="remember_me" name="remember" aria-describedby="remember" />
                                         <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">
                                             {{ __('Remember me') }}
                                         </span>
