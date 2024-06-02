@@ -12,6 +12,7 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/3c50d6bc4f.js" crossorigin="anonymous"></script>
 
@@ -20,10 +21,21 @@
 
     <!-- Styles -->
     @livewireStyles
+
+    <!-- Dark Mode -->
+    <script>
+        // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    </script>
 </head>
 
 <body>
-    <div class="font-sans text-gray-900 dark:text-gray-100 antialiased">
+    <div class="font-sans text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-900 antialiased">
+        <!-- Content -->
         {{ $slot }}
     </div>
 

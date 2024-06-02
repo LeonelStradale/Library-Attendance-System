@@ -13,6 +13,7 @@ export default {
     ],
 
     theme: {
+        darkMode: "media",
         extend: {
             colors: {
                 primary: {

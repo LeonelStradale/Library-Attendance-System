@@ -3,11 +3,11 @@
     @include('layouts.partials.app.navbar')
 
     <!-- Content -->
-    <div class="container mt-16">
+    <div class="h-screen container mt-16">
         <div class="flex justify-center items-center">
 
             <!-- Card -->
-            <div class="block max-w-xl p-6 rounded-lg shadow-2xl dark:bg-gray-600 dark:border-gray-700">
+            <div class="block max-w-xl p-6 rounded-lg shadow-2xl dark:bg-gray-900 border">
                 <h1 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-center">
                     {{ __('Library Assistance')}}
                     <i class="fa-solid fa-book-open-reader ml-1"></i>
