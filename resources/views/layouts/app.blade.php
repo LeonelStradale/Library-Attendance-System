@@ -7,6 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/12626/12626844.png" type="image/x-icon">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -17,6 +18,9 @@
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/3c50d6bc4f.js" crossorigin="anonymous"></script>
 
+    <!-- Charts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 

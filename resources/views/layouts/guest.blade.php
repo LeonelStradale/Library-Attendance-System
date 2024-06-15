@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/12626/12626844.png" type="image/x-icon">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -34,7 +35,7 @@
 </head>
 
 <body>
-    <div class="font-sans text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-900 antialiased">
+    <div class="h-screen font-sans text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-900 antialiased">
         <!-- Content -->
         {{ $slot }}
     </div>

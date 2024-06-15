@@ -7,7 +7,14 @@
             'route' => route('dashboard'),
             'active' => request()->routeIs('dashboard'),
         ],
-        // Users
+        // Attendances
+        [
+            'name' => 'Attendances',
+            'icon' => 'fa-solid fa-file-pen',
+            'route' => route('attendances.index'),
+            'active' => request()->routeIs('attendances.*'),
+        ],
+        // Assistants
         [
             'name' => 'Assistants',
             'icon' => 'fa-solid fa-user-group',

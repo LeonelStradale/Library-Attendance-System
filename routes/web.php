@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AssistantController;
+use App\Http\Controllers\AttendanceController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -18,3 +19,5 @@ Route::middleware([
 });
 
 Route::resource('/assistants', AssistantController::class);
+
+Route::resource('/attendances', AttendanceController::class);
