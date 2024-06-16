@@ -10,13 +10,14 @@ class Assistant extends Model
     use HasFactory;
 
     protected $fillable = [
-        'key',
+        'number_id',
+        'cycle',
         'first_name',
         'paternal_surname',
         'maternal_surname',
         'career',
         'degree',
-        'group',
+        'area',
         'gender',
         'user_type',
     ];

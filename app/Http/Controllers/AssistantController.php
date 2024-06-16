@@ -12,7 +12,7 @@ class AssistantController extends Controller
      */
     public function index()
     {
-        $assistants = Assistant::orderBy('id', 'desc')->paginate(10);
+        $assistants = Assistant::orderBy('id', 'asc')->paginate(10);
 
         return view('assistants.index', compact('assistants'));
     }

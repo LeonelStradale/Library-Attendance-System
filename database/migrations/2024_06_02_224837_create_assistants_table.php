@@ -12,13 +12,14 @@ return new class extends Migration {
     {
         Schema::create('assistants', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('key')->nullable()->unique();
+            $table->string('number_id')->nullable()->unique();
+            $table->string('cycle')->nullable();
             $table->string('first_name');
             $table->string('paternal_surname');
             $table->string('maternal_surname');
             $table->string('career');
             $table->string('degree')->nullable();
-            $table->string('group')->nullable();
+            $table->string('area')->nullable();
             $table->string('gender');
             $table->string('user_type');
             $table->timestamps();
