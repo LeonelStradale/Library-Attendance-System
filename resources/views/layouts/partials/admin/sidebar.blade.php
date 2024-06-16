@@ -21,6 +21,13 @@
             'route' => route('assistants.index'),
             'active' => request()->routeIs('assistants.*'),
         ],
+        // Lockers
+        [
+            'name' => 'Lockers',
+            'icon' => 'fa-solid fa-lock',
+            'route' => route('lockers.index'),
+            'active' => request()->routeIs('lockers.*'),
+        ],
     ];
 @endphp
 

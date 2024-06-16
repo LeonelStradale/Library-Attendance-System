@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Assistant;
+use App\Models\Locker;
 use Illuminate\Http\Request;
 
-class AssistantController extends Controller
+class LockerController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $assistants = Assistant::orderBy('id', 'asc')->paginate(10);
+        $lockers = Locker::orderBy('id', 'asc')->paginate(10);
 
-        return view('assistants.index', compact('assistants'));
+        return view('lockers.index', compact('lockers'));
     }
 
     /**
@@ -36,9 +36,9 @@ class AssistantController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Assistant $assistant)
+    public function show(string $id)
     {
-        return view('assistants.show', compact('assistant'));
+        //
     }
 
     /**
