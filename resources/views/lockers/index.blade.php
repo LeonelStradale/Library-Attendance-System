@@ -95,8 +95,8 @@
                 <span class="font-medium">
                     {{ __('Info alert!') }}
                 </span>
-                {{ __('There are no registered library users') }}
-                <i class="fa-solid fa-user-group ml-1"></i>
+                {{ __('There are no registered lockers in the library.') }}
+                <i class="fa-solid fa-lock ml-1"></i>
             </div>
         </div>
     @endif

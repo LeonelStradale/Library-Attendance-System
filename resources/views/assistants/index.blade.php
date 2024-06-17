@@ -26,8 +26,8 @@
                     <div
                         class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600 bg-blue-700">
                         <h3 class="text-xl font-semibold text-white">
-                            {{ __('Register entry') }}
-                            <i class="fa-solid fa-person-walking-arrow-right ml-1"></i>
+                            {{ __('Search user') }}
+                            <i class="fa-solid fa-magnifying-glass ml-1"></i>
                         </h3>
                         <button type="button"
                             class="end-2.5 text-gray-200 hover:text-gray-300 bg-transparent rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
@@ -44,17 +44,14 @@
                     <!-- MODAL: Body -->
                     <div class="p-4 md:p-5">
                         <p class="font-normal text-gray-700 dark:text-gray-400">
-                            {{ __('To register your entry in the library please enter your student id or
-                                                                    control number if you are a teacher. If
-                                                                    you do not belong to the university community, access the registration with the
-                                                                    "External" button.') }}
+                            {{ __('To search for a specific user, enter their license plate, control number or full name to identify them.') }}
                         </p>
 
                         <!-- MODAL: Form -->
-                        <form class="space-y-4 mt-8" action="#">
+                        <form class="space-y-4 mt-4" action="#">
                             <div>
                                 <x-label for="key">
-                                    {{ __('Student ID | Control Number') }}
+                                    {{ __('Student ID | Control Number | Full Name') }}
                                 </x-label>
                                 <x-input type="text" name="key" id="key" autofocus placeholder="482100078"
                                     required />

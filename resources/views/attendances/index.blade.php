@@ -1,12 +1,12 @@
 <x-app-layout :breadcrumbs="[
-        [
-            'name' => 'Dashboard',
-            'route' => route('dashboard'),
-        ],
-        [
-            'name' => 'Attendances',
-        ],
-    ]">
+    [
+        'name' => 'Dashboard',
+        'route' => route('dashboard'),
+    ],
+    [
+        'name' => 'Attendances',
+    ],
+]">
 
     <x-slot name="action">
         <div class="w-[345px] flex justify-center items-center">
@@ -25,16 +25,16 @@
 
                         <!-- MODAL: Header -->
                         <div
-                            class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600 bg-gradient-to-br from-purple-600 to-blue-500">
+                            class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600 bg-red-700">
                             <h3 class="text-xl font-semibold text-white">
-                                {{ __('Register entry')}}
-                                <i class="fa-solid fa-person-walking-arrow-right ml-1"></i>
+                                {{ __('Generate general report in PDF') }}
+                                <i class="fa-solid fa-user-group ml-1"></i>
                             </h3>
                             <button type="button"
                                 class="end-2.5 text-gray-200 hover:text-gray-300 bg-transparent rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
                                 data-modal-hide="general-report-modal">
-                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                    viewBox="0 0 14 14">
+                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                    fill="none" viewBox="0 0 14 14">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                         stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                                 </svg>
@@ -45,27 +45,57 @@
                         <!-- MODAL: Body -->
                         <div class="p-4 md:p-5">
                             <p class="font-normal text-gray-700 dark:text-gray-400">
-                                {{ __('To register your entry in the library please enter your student id or
-                                        control number if you are a teacher. If
-                                        you do not belong to the university community, access the registration with the
-                                        "External" button.')}}
+                                {{ __('To create a general report of library attendance, first choose the date period in which the report will be generated, then click on "Download report" to obtain the PDF file.') }}
                             </p>
 
                             <!-- MODAL: Form -->
-                            <form class="space-y-4 mt-8" action="#">
+                            <form class="space-y-4 mt-4" action="#">
                                 <div>
-                                    <x-label for="key">
-                                        {{ __('Student ID | Control Number')}}
+                                    <x-label>
+                                        {{ __('Select the time period') }}
                                     </x-label>
-                                    <x-input type="text" name="key" id="key" autofocus placeholder="482100078"
-                                        required />
+                                    <div date-rangepicker class="flex items-center">
+                                        <div class="relative">
+                                            <div
+                                                class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                                                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                    viewBox="0 0 20 20">
+                                                    <path
+                                                        d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+                                                </svg>
+                                            </div>
+                                            <!-- Start Date -->
+                                            <input name="start" type="text"
+                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                placeholder="Select date start">
+                                        </div>
+                                        <span class="mx-4 text-gray-500">
+                                            {{ __('to') }}
+                                        </span>
+                                        <div class="relative">
+                                            <div
+                                                class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                                                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                    viewBox="0 0 20 20">
+                                                    <path
+                                                        d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+                                                </svg>
+                                            </div>
+                                            <!-- End Date -->
+                                            <input name="end" type="text"
+                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                placeholder="Select date end">
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <!-- MODAL: Submit -->
                                 <button type="submit"
-                                    class="w-full text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
-                                    {{ __('Find user')}}
-                                    <i class="fa-solid fa-magnifying-glass ml-1"></i>
+                                    class="w-full text-white bg-red-700 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+                                    {{ __('Download report') }}
+                                    <i class="fa-solid fa-arrow-down ml-1"></i>
                                 </button>
                             </form>
                         </div>
@@ -89,16 +119,16 @@
 
                         <!-- MODAL: Header -->
                         <div
-                            class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600 bg-gradient-to-br from-purple-600 to-blue-500">
+                            class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600 bg-red-700">
                             <h3 class="text-xl font-semibold text-white">
-                                {{ __('Register entry')}}
-                                <i class="fa-solid fa-person-walking-arrow-right ml-1"></i>
+                                {{ __('Generate individual report in PDF') }}
+                                <i class="fa-solid fa-user ml-1"></i>
                             </h3>
                             <button type="button"
                                 class="end-2.5 text-gray-200 hover:text-gray-300 bg-transparent rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
                                 data-modal-hide="individual-report-modal">
-                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                    viewBox="0 0 14 14">
+                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                    fill="none" viewBox="0 0 14 14">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                         stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                                 </svg>
@@ -109,27 +139,65 @@
                         <!-- MODAL: Body -->
                         <div class="p-4 md:p-5">
                             <p class="font-normal text-gray-700 dark:text-gray-400">
-                                {{ __('To register your entry in the library please enter your student id or
-                                        control number if you are a teacher. If
-                                        you do not belong to the university community, access the registration with the
-                                        "External" button.')}}
+                                {{ __("To create an individual library attendance report, first enter the user's registration number, control number or full name, then choose the date period in which the report will be generated, then click 'Download report' to obtain the PDF file.") }}
                             </p>
 
                             <!-- MODAL: Form -->
-                            <form class="space-y-4 mt-8" action="#">
+                            <form class="space-y-4 mt-4" action="#">
                                 <div>
                                     <x-label for="key">
-                                        {{ __('Student ID | Control Number')}}
+                                        {{ __('Student ID | Control Number | Full Name') }}
                                     </x-label>
-                                    <x-input type="text" name="key" id="key" autofocus placeholder="482100078"
-                                        required />
+                                    <x-input type="text" name="key" id="key" autofocus
+                                        placeholder="482100078" required />
+                                </div>
+
+                                <div>
+                                    <x-label>
+                                        {{ __('Select the time period') }}
+                                    </x-label>
+                                    <div date-rangepicker class="flex items-center">
+                                        <div class="relative">
+                                            <div
+                                                class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                                                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400"
+                                                    aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                                    fill="currentColor" viewBox="0 0 20 20">
+                                                    <path
+                                                        d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+                                                </svg>
+                                            </div>
+                                            <!-- Start Date -->
+                                            <input name="start" type="text"
+                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                placeholder="Select date start">
+                                        </div>
+                                        <span class="mx-4 text-gray-500">
+                                            {{ __('to') }}
+                                        </span>
+                                        <div class="relative">
+                                            <div
+                                                class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                                                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400"
+                                                    aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                                    fill="currentColor" viewBox="0 0 20 20">
+                                                    <path
+                                                        d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+                                                </svg>
+                                            </div>
+                                            <!-- End Date -->
+                                            <input name="end" type="text"
+                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                placeholder="Select date end">
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <!-- MODAL: Submit -->
                                 <button type="submit"
-                                    class="w-full text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
-                                    {{ __('Find user')}}
-                                    <i class="fa-solid fa-magnifying-glass ml-1"></i>
+                                    class="w-full text-white bg-red-700 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+                                    {{ __('Download report') }}
+                                    <i class="fa-solid fa-arrow-down ml-1"></i>
                                 </button>
                             </form>
                         </div>
@@ -187,7 +255,7 @@
 
                             <!-- Today's Present Attendees: Data -->
                             <p class="mb-3 font-normal text-center text-gray-500 dark:text-gray-400">
-                                {{ __("7 Assistants") }}
+                                {{ __('7 Assistants') }}
                                 <i class="fa-solid fa-user-group ml-1"></i>
                             </p>
                         </div>

@@ -8,7 +8,7 @@
         <!-- Card -->
         <div class="block max-w-xl p-6 mx-0 rounded-lg shadow-2xl dark:bg-gray-900 border">
             <h1 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-center">
-                {{ __('Library Assistance')}}
+                {{ __('Library Assistance') }}
                 <i class="fa-solid fa-book-open-reader ml-1"></i>
             </h1>
 
@@ -29,7 +29,7 @@
                     class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
                     <span
                         class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0 text-base font-bold">
-                        {{ __('Entrance')}}
+                        {{ __('Entrance') }}
                         <i class="fa-solid fa-person-walking-arrow-right ml-1"></i>
                     </span>
                 </button>
@@ -44,7 +44,7 @@
                             <div
                                 class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600 bg-gradient-to-br from-purple-600 to-blue-500">
                                 <h3 class="text-xl font-semibold text-white">
-                                    {{ __('Register entry')}}
+                                    {{ __('Register entry') }}
                                     <i class="fa-solid fa-person-walking-arrow-right ml-1"></i>
                                 </h3>
                                 <button type="button"
@@ -63,27 +63,59 @@
                             <div class="p-4 md:p-5">
                                 <p class="font-normal text-gray-700 dark:text-gray-400">
                                     {{ __('To register your entry in the library please enter your student id or
-                                        control number if you are a teacher. If
-                                        you do not belong to the university community, access the registration with the
-                                        "External" button.')}}
+                                                                                                                                                                                                                                                                                                    control number if you are a teacher. If
+                                                                                                                                                                                                                                                                                                    you do not belong to the university community, access the registration with the
+                                                                                                                                                                                                                                                                                   "External" button.') }}
                                 </p>
 
                                 <!-- MODAL: Form -->
                                 <form class="space-y-4 mt-8" action="#">
                                     <div>
                                         <x-label for="key">
-                                            {{ __('Student ID | Control Number')}}
+                                            {{ __('Student ID | Control Number | Full Name') }}
                                         </x-label>
-                                        <x-input type="text" name="key" id="key" autofocus placeholder="482100078"
-                                            required />
+                                        <x-input type="text" name="key" id="key" autofocus
+                                            placeholder="482100078" required />
+                                    </div>
+
+                                    <div>
+                                        <x-label>
+                                            {{ __('Do you want to request a locker?') }}
+                                        </x-label>
+                                        <div class="mt-2">
+
+                                            <div class="flex items-center me-4">
+                                                <input id="locker_yes" name="request_locker" type="checkbox"
+                                                    value="yes" onclick="toggleCheckbox('locker_no')"
+                                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                <label for="locker_yes"
+                                                    class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                                    {{ __('Yes, request a locker') }}
+                                                </label>
+
+                                                <input checked id="locker_no" name="request_locker" type="checkbox"
+                                                    value="no" onclick="toggleCheckbox('locker_yes')"
+                                                    class="ml-4 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                <label for="locker_no"
+                                                    class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                                    {{ __('No, thanks') }}
+                                                </label>
+                                            </div>
+                                        </div>
                                     </div>
 
                                     <!-- MODAL: Submit -->
                                     <button type="submit"
                                         class="w-full text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
-                                        {{ __('Find user')}}
+                                        {{ __('Find user') }}
                                         <i class="fa-solid fa-magnifying-glass ml-1"></i>
                                     </button>
+
+                                    <a href=""
+                                        class="block text-white bg-gradient-to-br from-gray-600 to-gray-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+                                        {{ __('Register external user') }}
+                                        <i class="fa-solid fa-user ml-1"></i>
+                                    </a>
                                 </form>
                             </div>
                         </div>
@@ -95,7 +127,7 @@
                     class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800">
                     <span
                         class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0 text-base font-bold">
-                        {{ __('Exit')}}
+                        {{ __('Exit') }}
                         <i class="fa-solid fa-door-open ml-2"></i>
                     </span>
                 </button>
@@ -110,7 +142,7 @@
                             <div
                                 class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600 bg-gradient-to-br from-pink-500 to-orange-400">
                                 <h3 class="text-xl font-semibold text-white">
-                                    {{ __('Check out')}}
+                                    {{ __('Check out') }}
                                     <i class="fa-solid fa-door-open ml-2"></i>
                                 </h3>
                                 <button type="button"
@@ -128,23 +160,23 @@
                             <!-- MODAL: Body -->
                             <div class="p-4 md:p-5">
                                 <p class="font-normal text-gray-700 dark:text-gray-400">
-                                    {{ __('To check out of the library, enter your student registration number or Control Number if you are a teacher. If you do not belong to the university community, access the check-out with the "External" Button.')}}
+                                    {{ __('To check out of the library, enter your student registration number or Control Number if you are a teacher. If you do not belong to the university community, access the check-out with the "External" Button.') }}
                                 </p>
 
                                 <!-- MODAL: Form -->
                                 <form class="space-y-4 mt-8" action="#">
                                     <div>
                                         <x-label for="key">
-                                            {{ __('Student ID | Control Number')}}
+                                            {{ __('Student ID | Control Number | Full Name') }}
                                         </x-label>
-                                        <x-input type="text" name="key" id="key" autofocus placeholder="482100078"
-                                            required />
+                                        <x-input type="text" name="key" id="key" autofocus
+                                            placeholder="482100078" required />
                                     </div>
 
                                     <!-- MODAL: Submit -->
                                     <button type="submit"
                                         class="w-full text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
-                                        {{ __('Find user')}}
+                                        {{ __('Find user') }}
                                         <i class="fa-solid fa-magnifying-glass ml-1"></i>
                                     </button>
                                 </form>
@@ -156,7 +188,7 @@
 
             <!-- Info -->
             <p class="mt-2 font-normal text-gray-700 dark:text-gray-400 text-center">
-                {{ __('To check in or out please select one of two options.')}}
+                {{ __('To check in or out please select one of two options.') }}
                 <i class="fa-solid fa-circle-info"></i>
             </p>
         </div>
@@ -173,5 +205,9 @@
         updateTime();
 
         setInterval(updateTime, 1000);
+
+        function toggleCheckbox(otherCheckboxId) {
+            document.getElementById(otherCheckboxId).checked = false;
+        }
     </script>
 </x-guest-layout>

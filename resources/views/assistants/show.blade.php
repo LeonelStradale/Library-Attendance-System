@@ -97,13 +97,13 @@
                                 <!-- Degree -->
                                 <x-label for="degree" value="{{ __('Degree') }}" />
                                 <x-input id="degree" class="mt-1" type="text" name="degree"
-                                    value="{{ $assistant->degree }}" />
+                                    value="{{ $assistant->degree }}" disabled />
                             </div>
                             <div>
                                 <!-- Area -->
                                 <x-label for="area" value="{{ __('Area') }}" />
                                 <x-input id="area" class="mt-1" type="text" name="area"
-                                    value="{{ $assistant->area }}" />
+                                    value="{{ $assistant->area }}" disabled />
                             </div>
                         </div>
                     </div>
