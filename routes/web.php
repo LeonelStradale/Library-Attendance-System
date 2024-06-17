@@ -21,6 +21,10 @@ Route::middleware([
 
 Route::resource('/assistants', AssistantController::class);
 
+Route::get('/assistants.createTeacher', [AssistantController::class, 'createTeacher'])->name('assistants.createTeacher');
+
+Route::get('/assistants.createExternal', [AssistantController::class, 'createExternal'])->name('assistants.createExternal');
+
 Route::resource('/attendances', AttendanceController::class);
 
 Route::resource('/lockers', LockerController::class);

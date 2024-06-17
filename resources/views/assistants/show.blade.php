@@ -8,7 +8,7 @@
         'route' => route('assistants.index'),
     ],
     [
-        'name' => $assistant->first_name . ' ' . $assistant->paternal_surname . ' ' . $assistant->maternal_surname,
+        'name' => 'User information',
     ],
 ]">
 
@@ -77,41 +77,48 @@
             </h1>
 
             @if ($assistant->user_type == 'Estudiante')
-                <!-- Career and other fields for Estudiante -->
-                <div class="grid grid-cols-3 gap-4">
-                    <!-- Column 1 -->
-                    <div class="col-span-2">
-                        <!-- Career -->
-                        <x-label for="career" value="{{ __('Career') }}" />
-                        <x-input id="career" class="block mt-1 w-full" type="text" name="career"
-                            value="{{ $assistant->career }}" disabled />
-                    </div>
-
-                    <!-- Column 2 -->
-                    <div class="col-span-1">
-                        <div class="grid grid-cols-2 gap-4">
-                            <div>
-                                <!-- Grade -->
-                                <x-label for="grade" value="{{ __('Grade') }}" />
-                                <x-input id="grade" class="mt-1" type="text" name="grade"
-                                    value="{{ $assistant->grade }}" disabled />
-                            </div>
-                            <div>
-                                <!-- Area -->
-                                <x-label for="area" value="{{ __('Area') }}" />
-                                <x-input id="area" class="mt-1" type="text" name="area"
-                                    value="{{ $assistant->area }}" disabled />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            @elseif($assistant->user_type == 'Docente')
-                <!-- Only Career for Docente -->
                 <div>
                     <!-- Career -->
                     <x-label for="career" value="{{ __('Career') }}" />
                     <x-input id="career" class="block mt-1 w-full" type="text" name="career"
                         value="{{ $assistant->career }}" disabled />
+                </div>
+
+                <div class="grid grid-cols-3 gap-4">
+                    <div>
+                        <!-- Student ID -->
+                        <x-label for="number_id" value="{{ __('Student ID') }}" />
+                        <x-input id="number_id" class="mt-1" type="text" name="number_id"
+                            value="{{ $assistant->number_id }}" disabled />
+                    </div>
+
+                    <div>
+                        <!-- Grade -->
+                        <x-label for="grade" value="{{ __('Grade') }}" />
+                        <x-input id="grade" class="mt-1" type="text" name="grade"
+                            value="{{ $assistant->grade }}" disabled />
+                    </div>
+                    <div>
+                        <!-- Area -->
+                        <x-label for="area" value="{{ __('Area') }}" />
+                        <x-input id="area" class="mt-1" type="text" name="area"
+                            value="{{ $assistant->area }}" disabled />
+                    </div>
+                </div>
+            @elseif ($assistant->user_type == 'Docente')
+                <div class="grid grid-cols-3 gap-4">
+                    <div>
+                        <!-- Number control -->
+                        <x-label for="number_id" value="{{ __('Number control') }}" />
+                        <x-input id="number_id" class="mt-1" type="text" name="number_id"
+                            value="{{ $assistant->number_id }}" disabled />
+                    </div>
+                    <div class="col-span-2">
+                        <!-- Career direction -->
+                        <x-label for="career" value="{{ __('Career direction') }}" />
+                        <x-input id="career" class="block mt-1 w-full" type="text" name="career"
+                            value="{{ $assistant->career }}" disabled />
+                    </div>
                 </div>
             @endif
         </div>

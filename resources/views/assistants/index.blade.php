@@ -95,7 +95,7 @@
                 </li>
                 <li>
                     <!-- Create teacher -->
-                    <a href="#"
+                    <a href="{{ route('assistants.createTeacher') }}"
                         class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                         {{ __('Create teacher') }}
                         <i class="fa-solid fa-chalkboard-user ml-1"></i>
@@ -103,7 +103,7 @@
                 </li>
                 <li>
                     <!-- Create external -->
-                    <a href="#"
+                    <a href="{{ route('assistants.createExternal') }}"
                         class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                         {{ __('Create external') }}
                         <i class="fa-solid fa-user ml-1"></i>

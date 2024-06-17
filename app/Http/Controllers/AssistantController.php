@@ -33,6 +33,22 @@ class AssistantController extends Controller
         //
     }
 
+    /* 
+        Shows the view to register a new teacher
+    */
+    public function createTeacher()
+    {
+        return view('assistants.createTeacher');
+    }
+
+    /* 
+        Shows the view to register a new external
+    */
+    public function createExternal()
+    {
+        return view('assistants.createExternal');
+    }
+
     /**
      * Display the specified resource.
      */
@@ -44,9 +60,9 @@ class AssistantController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Assistant $assistant)
     {
-        //
+        return view('assistants.edit', compact('assistant'));
     }
 
     /**
