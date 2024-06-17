@@ -13,29 +13,26 @@
 ]">
 
     <x-slot name="action">
-        <button type="button"
-            class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800">
-            <a href="#">
+        <div class="flex">
+            <a href=""
+                class="block text-white bg-red-600 hover:bg-red-500 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
                 {{ __('Delete') }}
                 <i class="fa-solid fa-trash-can ml-1"></i>
             </a>
-        </button>
 
-        <button type="button"
-            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-            <a href="{{ route('assistants.edit', $assistant) }}">
+            <a href="{{ route('assistants.edit', $assistant) }}"
+                class="block text-white bg-blue-600 hover:bg-blue-500 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
                 {{ __('Edit') }}
                 <i class="fa-solid fa-pen-to-square ml-1"></i>
             </a>
-        </button>
 
-        <button type="button"
-            class="text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-600 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">
-            <a href="{{ route('assistants.index') }}">
+            <a href="{{ route('assistants.index') }}"
+                class="block text-white bg-gray-600 hover:bg-gray-500 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:focus:ring-gray-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
                 {{ __('Go back') }}
                 <i class="fa-solid fa-arrow-rotate-left ml-1"></i>
             </a>
-        </button>
+        </div>
+
     </x-slot>
 
     <div class="w-full bg-white rounded-lg shadow-2xl dark:border md:mt-0 xl:p-0 dark:bg-gray-800 dark:border-gray-700">
@@ -94,10 +91,10 @@
                     <div class="col-span-1">
                         <div class="grid grid-cols-2 gap-4">
                             <div>
-                                <!-- Degree -->
-                                <x-label for="degree" value="{{ __('Degree') }}" />
-                                <x-input id="degree" class="mt-1" type="text" name="degree"
-                                    value="{{ $assistant->degree }}" disabled />
+                                <!-- Grade -->
+                                <x-label for="grade" value="{{ __('Grade') }}" />
+                                <x-input id="grade" class="mt-1" type="text" name="grade"
+                                    value="{{ $assistant->grade }}" disabled />
                             </div>
                             <div>
                                 <!-- Area -->

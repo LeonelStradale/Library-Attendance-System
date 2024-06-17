@@ -22,7 +22,7 @@ class AssistantController extends Controller
      */
     public function create()
     {
-        //
+        return view('assistants.create');
     }
 
     /**

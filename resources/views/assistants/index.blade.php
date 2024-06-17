@@ -87,7 +87,7 @@
             <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
                 <li>
                     <!-- Create student -->
-                    <a href="#"
+                    <a href="{{ route('assistants.create') }}"
                         class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                         {{ __('Create student') }}
                         <i class="fa-solid fa-user-graduate ml-1"></i>

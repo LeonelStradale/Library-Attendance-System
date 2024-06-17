@@ -11,12 +11,11 @@ class Assistant extends Model
 
     protected $fillable = [
         'number_id',
-        'cycle',
         'first_name',
         'paternal_surname',
         'maternal_surname',
         'career',
-        'degree',
+        'grade',
         'area',
         'gender',
         'user_type',
