@@ -27,4 +27,6 @@ Route::get('/assistants.createExternal', [AssistantController::class, 'createExt
 
 Route::resource('/attendances', AttendanceController::class);
 
+Route::get('/entrance', [AttendanceController::class, 'entrance'])->name('entrance');
+
 Route::resource('/lockers', LockerController::class);

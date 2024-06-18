@@ -14,6 +14,14 @@ class AttendanceController extends Controller
         return view('attendances.index');
     }
 
+    /*
+        Shows the entry view with attendance information
+    */
+    public function entrance()
+    {
+        return view('entrance');
+    }
+
     /**
      * Show the form for creating a new resource.
      */
