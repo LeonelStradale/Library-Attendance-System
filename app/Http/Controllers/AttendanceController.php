@@ -25,6 +25,16 @@ class AttendanceController extends Controller
         return view('entrance', compact('assistant'));
     }
 
+    /*
+        Shows the exit view with attendance information
+    */
+    public function exit()
+    {
+        $assistant = Assistant::find(58);
+
+        return view('exit', compact('assistant'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */

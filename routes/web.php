@@ -29,4 +29,6 @@ Route::resource('/attendances', AttendanceController::class);
 
 Route::get('/entrance', [AttendanceController::class, 'entrance'])->name('entrance');
 
+Route::get('/exit', [AttendanceController::class, 'exit'])->name('exit');
+
 Route::resource('/lockers', LockerController::class);

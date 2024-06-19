@@ -63,7 +63,7 @@
                                     value="{{ $assistant->career }}" disabled />
                             </div>
 
-                            <div class="grid grid-cols-3 gap-4 mt-4">
+                            <div class="grid grid-cols-3 gap-4 mt-4 mb-5">
                                 <div>
                                     <!-- Student ID -->
                                     <x-label for="number_id" value="{{ __('Student ID') }}" />
@@ -137,6 +137,46 @@
                                     <div class="bg-white rounded-full flex items-center justify-center w-10 h-10">
                                         <h1 class="font-bold text-gray-800 text-2xl">
                                             11
+                                        </h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card: Exit -->
+                <div
+                    class="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-2xl mb-8">
+                    <h5
+                        class="text-base text-white text-center rounded-t-lg font-semibold tracking-tight p-2 dark:text-white bg-red-700">
+                        {{ __('Check-out information') }}
+                        <i class="fa-solid fa-door-open ml-1"></i>
+                    </h5>
+
+                    <div class="flex justify-center items-center text-center p-3">
+                        <div class="mr-4">
+                            <h3 class="text-3xl font-bold dark:text-white">
+                                {{ \Carbon\Carbon::now('GMT-6')->format('d') }}
+                                {{ \Carbon\Carbon::now('GMT-6')->format('F') }}
+                                {{ \Carbon\Carbon::now('GMT-6')->format('Y') }}
+                            </h3>
+
+                            <h4 class="text-2xl font-sans text-gray-500 dark:text-white">
+                                14:10 PM
+                            </h4>
+                        </div>
+
+                        <div>
+                            <div class="bg-red-600 rounded-lg p-3">
+                                <h1 class="font-bold text-white">
+                                    {{ __('Total hours') }}
+                                    <i class="fa-solid fa-clock ml-1"></i>
+                                </h1>
+                                <div class="flex justify-center">
+                                    <div class="bg-white rounded-full flex items-center justify-center w-10 h-10">
+                                        <h1 class="font-bold text-gray-800 text-2xl">
+                                            4
                                         </h1>
                                     </div>
                                 </div>

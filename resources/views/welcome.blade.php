@@ -63,9 +63,9 @@
                             <div class="p-4 md:p-5">
                                 <p class="font-normal text-gray-700 dark:text-gray-400">
                                     {{ __('To register your entry in the library please enter your student id or
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            control number if you are a teacher. If
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            you do not belong to the university community, access the registration with the
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           "External" button.') }}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                control number if you are a teacher. If
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                you do not belong to the university community, access the registration with the
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               "External" button.') }}
                                 </p>
 
                                 <!-- MODAL: Form -->
@@ -83,7 +83,6 @@
                                             {{ __('Do you want to request a locker?') }}
                                         </x-label>
                                         <div class="mt-2">
-
                                             <div class="flex items-center me-4">
                                                 <input id="locker_yes" name="request_locker" type="checkbox"
                                                     value="yes" onclick="toggleCheckbox('locker_no')"
@@ -178,11 +177,15 @@
                                     </div>
 
                                     <!-- MODAL: Submit -->
-                                    <button type="submit"
-                                        class="w-full text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+                                    <a href="{{ route('exit') }}"
+                                        class="block text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
                                         {{ __('Find user') }}
                                         <i class="fa-solid fa-magnifying-glass ml-1"></i>
-                                    </button>
+                                    </a>
+
+                                    {{-- <button type="submit" class="w-full">
+
+                                    </button> --}}
                                 </form>
                             </div>
                         </div>
