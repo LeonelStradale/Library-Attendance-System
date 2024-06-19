@@ -31,4 +31,6 @@ Route::get('/entrance', [AttendanceController::class, 'entrance'])->name('entran
 
 Route::get('/exit', [AttendanceController::class, 'exit'])->name('exit');
 
+Route::get('/createExternalPeople', [AttendanceController::class, 'createExternalPeople'])->name('createExternalPeople');
+
 Route::resource('/lockers', LockerController::class);

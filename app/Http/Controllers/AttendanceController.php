@@ -16,6 +16,14 @@ class AttendanceController extends Controller
     }
 
     /*
+
+    */
+    public function createExternalPeople()
+    {
+        return view('createExternalPeople');
+    }
+
+    /*
         Shows the entry view with attendance information
     */
     public function entrance()
