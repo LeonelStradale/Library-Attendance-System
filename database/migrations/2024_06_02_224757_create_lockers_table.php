@@ -13,8 +13,8 @@ return new class extends Migration {
     {
         Schema::create('lockers', function (Blueprint $table) {
             $table->id();
-            $table->integer('number');
-            $table->boolean('availability')->default(0);
+            $table->integer('number')->unique();
+            $table->string('availability')->default('Disponible');
             $table->timestamps();
         });
 

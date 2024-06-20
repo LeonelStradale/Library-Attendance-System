@@ -227,4 +227,5 @@
             </div>
         </div>
     @endif
+
 </x-app-layout>

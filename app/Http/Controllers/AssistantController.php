@@ -64,8 +64,7 @@ class AssistantController extends Controller
             'text' => 'El nuevo estudiante se registró correctamente.'
         ]);
 
-        return redirect()->route('assistants.show', $assistant->id)
-            ->with('success', 'El usuario ha sido registrado exitosamente.');
+        return redirect()->route('assistants.show', $assistant->id);
     }
 
     /* 
@@ -111,8 +110,7 @@ class AssistantController extends Controller
             'text' => 'El nuevo docente se registró correctamente.'
         ]);
 
-        return redirect()->route('assistants.show', $assistant->id)
-            ->with('success', 'El usuario ha sido registrado exitosamente.');
+        return redirect()->route('assistants.show', $assistant->id);
     }
 
     /* 
@@ -154,8 +152,7 @@ class AssistantController extends Controller
             'text' => 'El nuevo usuario externo se registró correctamente.'
         ]);
 
-        return redirect()->route('assistants.show', $assistant->id)
-            ->with('success', 'El usuario ha sido registrado exitosamente.');
+        return redirect()->route('assistants.show', $assistant->id);
     }
 
     /**

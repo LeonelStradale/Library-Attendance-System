@@ -22,7 +22,7 @@ class LockerController extends Controller
      */
     public function create()
     {
-        //
+        return view('lockers.create');
     }
 
     /**
@@ -30,38 +30,85 @@ class LockerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'number' => 'required|integer|unique:lockers,number',
+            'availability' => 'required|string',
+        ]);
+
+        $locker = new Locker();
+        $locker->number = $request->number;
+        $locker->availability = $request->availability;
+
+        $locker->save();
+
+        session()->flash('swal', [
+            'icon' => 'success',
+            'title' => '¡Éxito!',
+            'text' => 'El nuevo locker se registró correctamente.'
+        ]);
+
+        return redirect()->route('lockers.show', $locker->id);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Locker $locker)
     {
-        //
+        return view('lockers.show', compact('locker'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Locker $locker)
     {
-        //
+        return view('lockers.edit', compact('locker'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Locker $locker)
     {
-        //
+        $rules = [
+            'number' => 'required|integer',
+            'availability' => 'required|string',
+        ];
+
+        if ($request->number != $locker->number) {
+            $rules['number'] .= '|unique:lockers,number';
+        }
+
+        $request->validate($rules);
+
+        $locker->number = $request->number;
+        $locker->availability = $request->availability;
+
+        $locker->save();
+
+        session()->flash('swal', [
+            'icon' => 'success',
+            'title' => '¡Éxito!',
+            'text' => 'El locker se actualizó correctamente.'
+        ]);
+
+        return redirect()->route('lockers.show', $locker->id);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Locker $locker)
     {
-        //
+        $locker->delete();
+
+        session()->flash('swal', [
+            'icon' => 'success',
+            'title' => '¡Éxito!',
+            'text' => 'El locker se eliminó correctamente.'
+        ]);
+
+        return redirect()->route('lockers.index');
     }
 }

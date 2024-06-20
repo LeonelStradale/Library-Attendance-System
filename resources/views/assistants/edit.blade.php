@@ -164,9 +164,8 @@
                 <!-- Submit -->
                 <x-button class="flex justify-center items-center mt-8">
                     {{ __('Update') }}
-                    <i class="fa-solid fa-floppy-disk ml-2"></i>
+                    <i class="fa-solid fa-floppy-disk ml-1"></i>
                 </x-button>
-
             </form>
         </div>
     </div>

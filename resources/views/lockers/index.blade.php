@@ -9,7 +9,7 @@
 ]">
 
     <x-slot name="action">
-        <a href=""
+        <a href="{{ route('lockers.create') }}"
             class="block text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 focus:outline-none dark:focus:ring-green-800">
             {{ __('Add new locker') }}
             <i class="fa-solid fa-plus ml-1"></i>
@@ -44,33 +44,55 @@
                                 {{ $locker->number }}
                             </th>
                             <td class="px-6 py-4">
-                                @if ($locker->availability == 0)
+                                @if ($locker->availability == 'Disponible')
                                     <!-- Available Badge -->
                                     <span
                                         class="bg-green-100 text-green-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">
-                                        {{ __('Available') }}
+                                        {{ $locker->availability }}
                                         <i class="fa-solid fa-lock-open ml-1"></i>
                                     </span>
-                                @elseif($locker->availability == 1)
-                                    <!-- In use Badge -->
+                                @elseif($locker->availability == 'En Uso')
+                                    <!-- In Use Badge -->
                                     <span
                                         class="bg-red-100 text-red-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">
-                                        {{ __('In use') }}
-                                        <i class="fa-solid fa-lock ml-1"></i>
+                                        {{ $locker->availability }}
+                                        <i class="fa-solid fa-lock-open ml-1"></i>
+                                    </span>
+                                @elseif($locker->availability == 'No Disponible')
+                                    <!-- Not Available Badge -->
+                                    <span
+                                        class="bg-yellow-100 text-yellow-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300">
+                                        {{ $locker->availability }}
+                                        <i class="fa-solid fa-xmark ml-1"></i>
                                     </span>
                                 @endif
                             </td>
-                            <td class="px-6 py-4">
-                                <a href=""
-                                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-                                    {{ __('Edit') }}
-                                    <i class="fa-solid fa-pen-to-square"></i>
-                                </a>
-                                <a href=""
-                                    class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-3 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
-                                    {{ __('Delete') }}
-                                    <i class="fa-solid fa-trash"></i>
-                                </a>
+                            <td class="px-6 py-2">
+                                <div class="flex">
+                                    <!-- Show -->
+                                    <a href="{{ route('lockers.show', $locker) }}"
+                                        class="text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-3 py-2 me-2 dark:bg-gray-700 dark:hover:bg-gray-800 focus:outline-none dark:focus:ring-gray-800">
+                                        {{ __('Show') }}
+                                        <i class="fa-solid fa-eye"></i>
+                                    </a>
+                                    <!-- Edit -->
+                                    <a href="{{ route('lockers.edit', $locker) }}"
+                                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 me-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                                        {{ __('Edit') }}
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </a>
+                                    <!-- Delete -->
+                                    <form action="{{ route('lockers.destroy', $locker) }}" method="POST"
+                                        id="delete-form-{{ $locker->id }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="button" onclick="confirmDelete({{ $locker->id }})"
+                                            class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-3 py-2 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800">
+                                            {{ __('Delete') }}
+                                            <i class="fa-solid fa-trash-can ml-1"></i>
+                                        </button>
+                                    </form>
+                                </div>
                             </td>
                         </tr>
                     @endforeach
@@ -98,5 +120,26 @@
             </div>
         </div>
     @endif
+
+    @push('js')
+        <script>
+            function confirmDelete(lockerId) {
+                Swal.fire({
+                    title: "¿Estás seguro?",
+                    text: "¡No podrás revertir esto!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "¡Sí, bórralo!",
+                    cancelButtonText: "Cancelar"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        document.getElementById('delete-form-' + lockerId).submit();
+                    }
+                });
+            }
+        </script>
+    @endpush
 
 </x-app-layout>
