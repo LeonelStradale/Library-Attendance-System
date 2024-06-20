@@ -43,7 +43,8 @@
             <x-validation-errors class="mb-4" />
 
             <!-- Form -->
-            <form method="POST" action="{{ route('assistants.store') }}">
+            <form method="POST" action="{{ route('assistants.update', $assistant) }}">
+                @method('PUT')
                 @csrf
 
                 <div class="grid grid-cols-3 gap-4">
@@ -51,8 +52,8 @@
                     <div>
                         <x-label for="first_name" value="{{ __('First name') }}" />
                         <x-input id="first_name" class="block mt-1 w-full" type="text" name="first_name"
-                            value="{{ old('first_name', $assistant->first_name) }}" required autocomplete="first-name"
-                            placeholder="Enter the first name" />
+                            value="{{ old('first_name', $assistant->first_name) }}" required autofocus
+                            autocomplete="first-name" placeholder="Enter the first name" />
                     </div>
                     <!-- Paternal Last Name -->
                     <div>
@@ -76,7 +77,7 @@
                         <div>
                             <x-label for="number_id" value="{{ __('Student ID') }}" />
                             <x-input id="number_id" class="block mt-1 w-full" type="number" name="number_id"
-                                value="{{ old('number_id', $assistant->number_id) }}" required autocomplete="number_id"
+                                value="{{ old('number_id', $assistant->number_id) }}" autocomplete="number_id"
                                 placeholder="Enter the student id" />
                         </div>
                         <!-- Grade -->
@@ -124,9 +125,7 @@
                         <x-label for="career" value="{{ __('Select a career') }}" />
                         <select id="career" name="career"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                            <option selected disabled>
-                                {{ __('Choose a career') }}
-                            </option>
+                            <option disabled>{{ __('Choose a career') }}</option>
                             @foreach (Career::cases() as $career)
                                 <option value="{{ $career->value }}"
                                     {{ $assistant->career === $career->value ? 'selected' : '' }}>
@@ -136,7 +135,7 @@
                         </select>
                     </div>
                 @elseif ($assistant->user_type == 'Docente')
-                    <div class="mt-4 grid grid-cols-3 gap-4">
+                    <div class="mt-4 grid grid-cols-4 gap-4">
                         <div>
                             <!-- Number control -->
                             <x-label for="number_id" value="{{ __('Number control') }}" />
@@ -154,6 +153,22 @@
                                     <option value="{{ $career->value }}"
                                         {{ $assistant->career === $career->value ? 'selected' : '' }}>
                                         {{ $career->value }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <!-- Gender -->
+                        <div>
+                            <x-label for="gender" value="{{ __('Select a gender') }}" />
+                            <select id="gender" name="gender"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                <option selected disabled>
+                                    {{ __('Choose a gender') }}
+                                </option>
+                                @foreach (Gender::cases() as $gender)
+                                    <option value="{{ $gender->value }}"
+                                        {{ $assistant->gender === $gender->value ? 'selected' : '' }}>
+                                        {{ $gender->value }}
                                     </option>
                                 @endforeach
                             </select>

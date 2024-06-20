@@ -64,7 +64,7 @@
                 <span
                     class="bg-yellow-100 text-yellow-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300">
                     {{ $locker->availability }}
-                    <i class="fa-solid fa-xmark ml-1"></i>
+                    <i class="fa-solid fa-ban ml-1"></i>
                 </span>
             @endif
         </div>

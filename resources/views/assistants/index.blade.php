@@ -184,22 +184,32 @@
                                     </span>
                                 @endif
                             </td>
-                            <td class="px-6 py-4">
-                                <a href="{{ route('assistants.show', $assistant) }}"
-                                    class="text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-3 py-2.5 me-2 mb-2 dark:bg-gray-700 dark:hover:bg-gray-800 focus:outline-none dark:focus:ring-gray-800">
-                                    {{ __('Show') }}
-                                    <i class="fa-solid fa-eye"></i>
-                                </a>
-                                <a href="{{ route('assistants.edit', $assistant) }}"
-                                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-                                    {{ __('Edit') }}
-                                    <i class="fa-solid fa-pen-to-square"></i>
-                                </a>
-                                <a href=""
-                                    class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-3 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
-                                    {{ __('Delete') }}
-                                    <i class="fa-solid fa-trash"></i>
-                                </a>
+                            <td class="px-6 py-2">
+                                <div class="flex">
+                                    <!-- Show -->
+                                    <a href="{{ route('assistants.show', $assistant) }}"
+                                        class="text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-3 py-2 me-2 dark:bg-gray-700 dark:hover:bg-gray-800 focus:outline-none dark:focus:ring-gray-800">
+                                        {{ __('Show') }}
+                                        <i class="fa-solid fa-eye"></i>
+                                    </a>
+                                    <!-- Edit -->
+                                    <a href="{{ route('assistants.edit', $assistant) }}"
+                                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 me-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                                        {{ __('Edit') }}
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </a>
+                                    <!-- Delete -->
+                                    <form action="{{ route('assistants.destroy', $assistant) }}" method="POST"
+                                        id="delete-form-{{ $assistant->id }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="button" onclick="confirmDelete({{ $assistant->id }})"
+                                            class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-3 py-2 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800">
+                                            {{ __('Delete') }}
+                                            <i class="fa-solid fa-trash-can ml-1"></i>
+                                        </button>
+                                    </form>
+                                </div>
                             </td>
                         </tr>
                     @endforeach
@@ -227,5 +237,26 @@
             </div>
         </div>
     @endif
+
+    @push('js')
+        <script>
+            function confirmDelete(assistantId) {
+                Swal.fire({
+                    title: "¿Estás seguro?",
+                    text: "¡No podrás revertir esto!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "¡Sí, bórralo!",
+                    cancelButtonText: "Cancelar"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        document.getElementById('delete-form-' + assistantId).submit();
+                    }
+                });
+            }
+        </script>
+    @endpush
 
 </x-app-layout>

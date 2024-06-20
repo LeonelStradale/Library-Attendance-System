@@ -14,11 +14,13 @@
 
     <x-slot name="action">
         <div class="flex">
-            <a href=""
-                class="block text-white bg-red-600 hover:bg-red-500 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+            <button onclick="confirmDelete()"
+                class="block text-white bg-red-600 hover:bg-red-500 focus:ring-4 focus:outline-none
+                focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2
+                mb-2">
                 {{ __('Delete') }}
                 <i class="fa-solid fa-trash-can ml-1"></i>
-            </a>
+            </button>
 
             <a href="{{ route('assistants.edit', $assistant) }}"
                 class="block text-white bg-blue-600 hover:bg-blue-500 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
@@ -123,5 +125,31 @@
             @endif
         </div>
     </div>
+
+    <form action="{{ route('assistants.destroy', $assistant) }}" method="POST" id="delete-form">
+        @csrf
+        @method('DELETE')
+    </form>
+
+    @push('js')
+        <script>
+            function confirmDelete() {
+                Swal.fire({
+                    title: "¿Estás seguro?",
+                    text: "¡No podrás revertir esto!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "¡Sí, bórralo!",
+                    cancelButtonText: "Cancelar"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        document.getElementById('delete-form').submit();
+                    }
+                });
+            }
+        </script>
+    @endpush
 
 </x-app-layout>

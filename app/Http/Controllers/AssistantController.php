@@ -229,16 +229,57 @@ class AssistantController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Assistant $assistant)
     {
-        //
+        $rules = [
+            'first_name' => 'required|string|max:255',
+            'paternal_surname' => 'required|string|max:255',
+            'maternal_surname' => 'nullable|string|max:255',
+            'gender' => 'required|string',
+        ];
+
+        if ($assistant->user_type === 'Estudiante') {
+            $rules['number_id'] = 'required|string|unique:assistants,number_id,' . $assistant->id;
+            $rules['career'] = 'required|string|max:255';
+            $rules['grade'] = 'required|string|max:255';
+            $rules['area'] = 'required|string|max:255';
+        } elseif ($assistant->user_type === 'Docente') {
+            $rules['number_id'] = 'required|string|unique:assistants,number_id,' . $assistant->id;
+            $rules['career'] = 'required|string|max:255';
+        }
+
+        $validatedData = $request->validate($rules);
+
+        $validatedData['first_name'] = strtoupper($validatedData['first_name']);
+        $validatedData['paternal_surname'] = strtoupper($validatedData['paternal_surname']);
+        if (isset($validatedData['maternal_surname'])) {
+            $validatedData['maternal_surname'] = strtoupper($validatedData['maternal_surname']);
+        }
+
+        $assistant->update($validatedData);
+
+        session()->flash('swal', [
+            'icon' => 'success',
+            'title' => '¡Éxito!',
+            'text' => 'El usuario se actualizó correctamente.'
+        ]);
+
+        return redirect()->route('assistants.show', $assistant->id);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Assistant $assistant)
     {
-        //
+        $assistant->delete();
+
+        session()->flash('swal', [
+            'icon' => 'success',
+            'title' => '¡Éxito!',
+            'text' => 'El usuario se eliminó correctamente.'
+        ]);
+
+        return redirect()->route('assistants.index');
     }
 }
