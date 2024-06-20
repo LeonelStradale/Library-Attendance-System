@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->string('first_name');
             $table->string('paternal_surname');
             $table->string('maternal_surname');
-            $table->string('career');
+            $table->string('career')->nullable();
             $table->string('grade')->nullable();
             $table->string('area')->nullable();
             $table->string('gender');

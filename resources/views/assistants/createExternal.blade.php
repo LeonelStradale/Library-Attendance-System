@@ -40,7 +40,7 @@
             <x-validation-errors class="mb-4" />
 
             <!-- Form -->
-            <form method="POST" action="{{ route('assistants.store') }}">
+            <form method="POST" action="{{ route('assistants.storeExternal') }}">
                 @csrf
 
                 <div class="grid grid-cols-3 gap-4">
@@ -55,14 +55,14 @@
                     <div>
                         <x-label for="paternal_surname" value="{{ __('Paternal last name') }}" />
                         <x-input id="paternal_surname" class="block mt-1 w-full" type="text" name="paternal_surname"
-                            :value="old('paternal_surname')" required autofocus autocomplete="paternal_surname"
+                            :value="old('paternal_surname')" required autocomplete="paternal-surname"
                             placeholder="Enter the paternal last name" />
                     </div>
                     <!-- Maternal Last Name -->
                     <div>
                         <x-label for="maternal_surname" value="{{ __('Maternal last name') }}" />
                         <x-input id="maternal_surname" class="block mt-1 w-full" type="text" name="maternal_surname"
-                            :value="old('maternal_surname')" required autofocus autocomplete="maternal_surname"
+                            :value="old('maternal_surname')" required autocomplete="maternal-surname"
                             placeholder="Enter the maternal last name" />
                     </div>
                 </div>
@@ -70,13 +70,14 @@
                 <div class="mt-4">
                     <!-- Gender -->
                     <x-label for="gender" value="{{ __('Select a gender') }}" />
-                    <select id="gender" name="gender"
+                    <select id="gender" name="gender" required
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         <option selected disabled>
                             {{ __('Choose a gender') }}
                         </option>
                         @foreach (Gender::cases() as $gender)
-                            <option value="{{ $gender->value }}">
+                            <option value="{{ $gender->value }}"
+                                {{ old('gender') == $gender->value ? 'selected' : '' }}>
                                 {{ $gender->value }}
                             </option>
                         @endforeach

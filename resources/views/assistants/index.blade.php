@@ -48,13 +48,14 @@
                         </p>
 
                         <!-- MODAL: Form -->
-                        <form class="space-y-4 mt-4" action="#">
+                        <form class="space-y-4 mt-4" action="{{ route('assistants.searchUser') }}" method="POST">
+                            @csrf
                             <div>
                                 <x-label for="key">
                                     {{ __('Student ID | Control Number | Full Name') }}
                                 </x-label>
-                                <x-input type="text" name="key" id="key" autofocus placeholder="482100078"
-                                    required />
+                                <x-input type="text" name="key" id="key" autofocus
+                                    placeholder="ej. 482100078, 393, Name" required />
                             </div>
 
                             <!-- MODAL: Submit -->
@@ -150,6 +151,9 @@
                                 {{ $assistant->id }}
                             </th>
                             <td class="px-6 py-4">
+                                @if ($assistant->user_type == 'Externo')
+                                    {{ __('EXT') }}
+                                @endif
                                 {{ $assistant->number_id }}
                             </td>
                             <td class="px-6 py-4">

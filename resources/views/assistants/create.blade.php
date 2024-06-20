@@ -57,14 +57,14 @@
                     <div>
                         <x-label for="paternal_surname" value="{{ __('Paternal last name') }}" />
                         <x-input id="paternal_surname" class="block mt-1 w-full" type="text" name="paternal_surname"
-                            :value="old('paternal_surname')" required autofocus autocomplete="paternal_surname"
+                            :value="old('paternal_surname')" required autocomplete="paternal-surname"
                             placeholder="Enter the paternal last name" />
                     </div>
                     <!-- Maternal Last Name -->
                     <div>
                         <x-label for="maternal_surname" value="{{ __('Maternal last name') }}" />
                         <x-input id="maternal_surname" class="block mt-1 w-full" type="text" name="maternal_surname"
-                            :value="old('maternal_surname')" required autofocus autocomplete="maternal_surname"
+                            :value="old('maternal_surname')" required autocomplete="maternal-surname"
                             placeholder="Enter the maternal last name" />
                     </div>
                 </div>
@@ -74,19 +74,19 @@
                     <div>
                         <x-label for="number_id" value="{{ __('Student ID') }}" />
                         <x-input id="number_id" class="block mt-1 w-full" type="number" name="number_id"
-                            :value="old('number_id')" required autofocus autocomplete="number_id"
-                            placeholder="Enter the student id" />
+                            :value="old('number_id')" required autocomplete="number-id" placeholder="Enter the student id" />
                     </div>
                     <!-- Grade -->
                     <div>
                         <x-label for="grade" :value="__('Select a grade')" />
-                        <select id="grade" name="grade"
+                        <select id="grade" name="grade" required
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                             <option selected disabled>
                                 {{ __('Choose a grade') }}
                             </option>
                             @foreach (Grade::cases() as $grade)
-                                <option value="{{ $grade->value }}">
+                                <option value="{{ $grade->value }}"
+                                    {{ old('grade') == $grade->value ? 'selected' : '' }}>
                                     {{ $grade->value }}
                                 </option>
                             @endforeach
@@ -96,18 +96,19 @@
                     <div>
                         <x-label for="area" value="{{ __('Area') }}" />
                         <x-input id="area" class="block mt-1 w-full" type="text" name="area"
-                            :value="old('area')" required autofocus autocomplete="area" placeholder="Enter the area" />
+                            :value="old('area')" required autocomplete="area" placeholder="Enter the area" />
                     </div>
                     <!-- Gender -->
                     <div>
                         <x-label for="gender" value="{{ __('Select a gender') }}" />
-                        <select id="gender" name="gender"
+                        <select id="gender" name="gender" required
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                             <option selected disabled>
                                 {{ __('Choose a gender') }}
                             </option>
                             @foreach (Gender::cases() as $gender)
-                                <option value="{{ $gender->value }}">
+                                <option value="{{ $gender->value }}"
+                                    {{ old('gender') == $gender->value ? 'selected' : '' }}>
                                     {{ $gender->value }}
                                 </option>
                             @endforeach
@@ -118,13 +119,14 @@
                 <div class="mt-4">
                     <!-- Career -->
                     <x-label for="career" value="{{ __('Select a career') }}" />
-                    <select id="career" name="career"
+                    <select id="career" name="career" required
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         <option selected disabled>
                             {{ __('Choose a career') }}
                         </option>
                         @foreach (Career::cases() as $career)
-                            <option value="{{ $career->value }}">
+                            <option value="{{ $career->value }}"
+                                {{ old('career') == $career->value ? 'selected' : '' }}>
                                 {{ $career->value }}
                             </option>
                         @endforeach
