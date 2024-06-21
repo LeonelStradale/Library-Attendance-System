@@ -6,6 +6,7 @@ use App\Models\Assistant;
 use App\Models\Attendance;
 use App\Models\Locker;
 use Carbon\Carbon;
+use DateTime;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,40 @@ class AttendanceController extends Controller
      */
     public function index()
     {
-        return view('attendances.index');
+        $currentDate = Carbon::now('GMT-6');
+
+        // Chart
+        $assistancePerMonth = DB::table('attendances')
+            ->select(DB::raw('MONTH(date) as month'), DB::raw('COUNT(*) as total'))
+            ->whereYear('date', now()->year)
+            ->groupBy('month')
+            ->orderBy('month')
+            ->get();
+
+        $months = [];
+        $dataAssists = [];
+
+        for ($month = 1; $month <= 12; $month++) {
+            $months[] = DateTime::createFromFormat('!m', $month)->format('F');
+            $data = $assistancePerMonth->firstWhere('month', $month);
+            $dataAssists[] = $data ? $data->total : 0;
+        }
+
+        // # 1
+        $numberUsersAttended = Attendance::whereDate('date', $currentDate->toDateString())->count();
+
+        // # 2
+        $numberUsersPresent = Attendance::whereDate('date', $currentDate->toDateString())
+            ->whereNull('exit')
+            ->count();
+
+        // # 3
+        $numberLockersAvailable = Locker::where('availability', 'Disponible')->count();
+
+        // # 4
+        $numberLockersInUse = Locker::where('availability', 'En Uso')->count();
+
+        return view('attendances.index', compact('dataAssists', 'months', 'numberUsersAttended', 'numberUsersPresent', 'numberLockersAvailable', 'numberLockersInUse'));
     }
 
     /*

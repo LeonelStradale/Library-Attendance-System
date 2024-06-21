@@ -3,6 +3,7 @@
 use App\Http\Controllers\AssistantController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\LockerController;
+use App\Http\Controllers\PDFController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [AttendanceController::class, 'welcome'])->name('welcome');
@@ -49,3 +50,8 @@ Route::delete('/rollbackExit/{id}', [AttendanceController::class, 'rollbackExit'
 
 // Lockers
 Route::resource('/lockers', LockerController::class);
+
+// PDF
+Route::get('/create-report-general', [PDFController::class, 'reportGeneral'])->name('reportGeneral');
+
+Route::get('/create-report-individual', [PDFController::class, 'reportIndividual'])->name('reportIndividual');

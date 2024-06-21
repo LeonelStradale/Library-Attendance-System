@@ -152,7 +152,7 @@
         <a href="/"
             class="text-white bg-green-700 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium text-base rounded-lg px-5 py-2.5 text-center me-2 mb-2 flex justify-center items-center">
             {{ __('Return to registration panel') }}
-            <i class="fa-solid fa-arrow-rotate-left ml-1"></i>
+            <i class="fa-solid fa-circle-check ml-1"></i>
         </a>
 
         <form action="{{ route('rollbackEntrance', $newAttendance->id) }}" method="POST">
@@ -161,7 +161,7 @@
             <button type="submit"
                 class="mt-4 w-full text-white bg-red-700 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium text-base rounded-lg px-5 py-2.5 text-center me-2 mb-2 flex justify-center items-center">
                 {{ __("It's not me, return to the panel") }}
-                <i class="fa-solid fa-xmark ml-1"></i>
+                <i class="fa-solid fa-arrow-rotate-left ml-1"></i>
             </button>
         </form>
     </div>

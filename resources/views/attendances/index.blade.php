@@ -49,7 +49,9 @@
                             </p>
 
                             <!-- MODAL: Form -->
-                            <form class="space-y-4 mt-4" action="#">
+                            <form class="space-y-4 mt-4" action="{{ route('reportGeneral') }}" method="GET">
+                                @csrf
+
                                 <div>
                                     <x-label>
                                         {{ __('Select the time period') }}
@@ -66,10 +68,12 @@
                                                 </svg>
                                             </div>
                                             <!-- Start Date -->
-                                            <input name="start" type="text"
+                                            <input name="start" type="text" required
                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                                 placeholder="Select date start">
                                         </div>
+
+
                                         <span class="mx-4 text-gray-500">
                                             {{ __('to') }}
                                         </span>
@@ -84,7 +88,7 @@
                                                 </svg>
                                             </div>
                                             <!-- End Date -->
-                                            <input name="end" type="text"
+                                            <input name="end" type="text" required
                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                                 placeholder="Select date end">
                                         </div>
@@ -145,6 +149,7 @@
                             <!-- MODAL: Form -->
                             <form class="space-y-4 mt-4" action="#">
                                 <div>
+                                    <!-- Key -->
                                     <x-label for="key">
                                         {{ __('Student ID | Control Number | Full Name') }}
                                     </x-label>
@@ -233,12 +238,20 @@
                             <!-- Total attendees today: Card -->
                             <h5
                                 class="mb-2 text-base text-white text-center rounded-t-lg font-semibold tracking-tight p-2 dark:text-white bg-primary-700">
-                                {{ __('Total attendees today: June 12, 2024') }}
+                                {{ __('Total attendees today:') }}
+                                {{ \Carbon\Carbon::now('GMT-6')->format('d') }}
+                                {{ \Carbon\Carbon::now('GMT-6')->format('F') }}
+                                {{ \Carbon\Carbon::now('GMT-6')->format('Y') }}
                             </h5>
 
                             <!-- Total attendees today: Data -->
                             <p class="mb-3 font-normal text-center text-gray-500 dark:text-gray-400">
-                                {{ __('11 Assistants') }}
+                                @if ($numberUsersAttended == 0)
+                                    {{ __('There are no user assistance today') }}
+                                @else
+                                    {{ $numberUsersAttended }}
+                                    {{ __('Assistants') }}
+                                @endif
                                 <i class="fa-solid fa-user-clock ml-1"></i>
                             </p>
                         </div>
@@ -255,7 +268,12 @@
 
                             <!-- Today's Present Attendees: Data -->
                             <p class="mb-3 font-normal text-center text-gray-500 dark:text-gray-400">
-                                {{ __('7 Assistants') }}
+                                @if ($numberUsersPresent == 0)
+                                    {{ __('No assistants present in the library') }}
+                                @else
+                                    {{ $numberUsersPresent }}
+                                    {{ __('Assistants') }}
+                                @endif
                                 <i class="fa-solid fa-user-group ml-1"></i>
                             </p>
                         </div>
@@ -272,7 +290,12 @@
 
                             <!-- Lockers available: Data -->
                             <p class="mb-3 font-normal text-center text-gray-500 dark:text-gray-400">
-                                {{ __('There are 20 lockers available') }}
+                                @if ($numberLockersAvailable == 0)
+                                    {{ __('There are no lockers available') }}
+                                @else
+                                    {{ $numberLockersAvailable }}
+                                    {{ __('lockers available') }}
+                                @endif
                                 <i class="fa-solid fa-lock-open ml-1"></i>
                             </p>
                         </div>
@@ -289,7 +312,12 @@
 
                             <!-- Lockers in use: Data -->
                             <p class="mb-3 font-normal text-center text-gray-500 dark:text-gray-400">
-                                {{ __('There are 12 lockers in use') }}
+                                @if ($numberLockersInUse == 0)
+                                    {{ __('There are no lockers in use') }}
+                                @else
+                                    {{ $numberLockersInUse }}
+                                    {{ __('Lockers in use') }}
+                                @endif
                                 <i class="fa-solid fa-lock ml-1"></i>
                             </p>
                         </div>
@@ -300,25 +328,35 @@
     </div>
 
     <script>
-        const ctx = document.getElementById('myChart');
+        var dataAssists = {
+            labels: {!! json_encode($months) !!},
+            datasets: [{
+                label: 'Asistencias Mensuales',
+                data: {!! json_encode($dataAssists) !!},
+                backgroundColor: 'rgba(224, 36, 36, 1)',
+                borderColor: 'rgba(155, 28, 28, 1)',
+                borderWidth: 1
+            }]
+        };
 
-        new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-                datasets: [{
-                    label: '# of Votes',
-                    data: [12, 19, 3, 5, 2, 3],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
+        var opciones = {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        stepSize: 1,
+                        precision: 0
                     }
                 }
             }
+        };
+
+        var ctx = document.getElementById('myChart').getContext('2d');
+
+        var myBarChart = new Chart(ctx, {
+            type: 'bar',
+            data: dataAssists,
+            options: opciones
         });
     </script>
 
