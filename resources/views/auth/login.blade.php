@@ -12,9 +12,8 @@
             <div
                 class="w-full bg-white rounded-lg shadow-2xl dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
                 <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
-                    <h1
-                        class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-                        {{ __('Sign in to your account')}}
+                    <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+                        {{ __('Sign in to your account') }}
                     </h1>
 
                     <!-- Form -->
@@ -61,15 +60,15 @@
                         <!-- Submit -->
                         <x-button class="flex justify-center items-center">
                             {{ __('Log in') }}
-                            <i class="fa-solid fa-right-to-bracket ml-2"></i>
+                            <i class="fa-solid fa-right-to-bracket ml-1"></i>
                         </x-button>
 
                         <!-- Sign up -->
                         <p class="text-center text-sm font-light text-gray-500 dark:text-gray-400">
-                            {{ __('Don’t have an account yet?')}}
+                            {{ __('Don’t have an account yet?') }}
                             <a href="{{ route('register') }}"
                                 class="font-medium text-primary-600 hover:underline dark:text-primary-500">
-                                {{ __('Sign up')}}
+                                {{ __('Sign up') }}
                             </a>
                         </p>
                     </form>

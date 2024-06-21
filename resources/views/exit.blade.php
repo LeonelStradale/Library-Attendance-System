@@ -2,7 +2,7 @@
     <!-- Navbar -->
     @include('layouts.partials.app.navbar')
 
-    <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16">
+    <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-8">
         <div class="grid grid-cols-3 gap-4">
             <div class="col-span-2">
                 <!-- Card: User info -->
@@ -123,25 +123,27 @@
                             </h3>
 
                             <h4 class="text-2xl font-sans text-gray-500 dark:text-white">
-                                11:07 AM
+                                {{ $existingAttendance->entrance }}
                             </h4>
                         </div>
 
-                        <div>
-                            <div class="bg-green-600 rounded-lg p-3">
-                                <h1 class="font-bold text-white">
-                                    {{ __('Locker number') }}
-                                    <i class="fa-solid fa-lock ml-1"></i>
-                                </h1>
-                                <div class="flex justify-center">
-                                    <div class="bg-white rounded-full flex items-center justify-center w-10 h-10">
-                                        <h1 class="font-bold text-gray-800 text-2xl">
-                                            11
-                                        </h1>
+                        @if ($existingAttendance->locker_number)
+                            <div>
+                                <div class="bg-green-600 rounded-lg p-3">
+                                    <h1 class="font-bold text-white">
+                                        {{ __('Locker number') }}
+                                        <i class="fa-solid fa-lock ml-1"></i>
+                                    </h1>
+                                    <div class="flex justify-center">
+                                        <div class="bg-white rounded-full flex items-center justify-center w-10 h-10">
+                                            <h1 class="font-bold text-gray-800 text-2xl">
+                                                {{ $existingAttendance->locker_number }}
+                                            </h1>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        @endif
                     </div>
                 </div>
 
@@ -163,7 +165,7 @@
                             </h3>
 
                             <h4 class="text-2xl font-sans text-gray-500 dark:text-white">
-                                14:10 PM
+                                {{ $existingAttendance->exit }}
                             </h4>
                         </div>
 
@@ -176,7 +178,7 @@
                                 <div class="flex justify-center">
                                     <div class="bg-white rounded-full flex items-center justify-center w-10 h-10">
                                         <h1 class="font-bold text-gray-800 text-2xl">
-                                            4
+                                            {{ $existingAttendance->total_hours }}
                                         </h1>
                                     </div>
                                 </div>
@@ -188,10 +190,20 @@
         </div>
 
         <a href="/"
-            class="h-12 text-white bg-primary-700 hover:bg-primary-600 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:focus:ring-primary-800 font-medium text-base rounded-lg px-5 py-2.5 text-center me-2 mb-2 flex justify-center items-center">
+            class="text-white bg-green-700 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium text-base rounded-lg px-5 py-2.5 text-center me-2 mb-2 flex justify-center items-center">
             {{ __('Return to registration panel') }}
-            <i class="fa-solid fa-arrow-rotate-left ml-1"></i>
+            <i class="fa-solid fa-check ml-1"></i>
         </a>
+
+        <form action="{{ route('rollbackExit', $existingAttendance->id) }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <button type="submit"
+                class="mt-4 w-full text-white bg-red-700 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium text-base rounded-lg px-5 py-2.5 text-center me-2 mb-2 flex justify-center items-center">
+                {{ __("It's not me, return to the panel") }}
+                <i class="fa-solid fa-xmark ml-1"></i>
+            </button>
+        </form>
     </div>
 
 </x-guest-layout>

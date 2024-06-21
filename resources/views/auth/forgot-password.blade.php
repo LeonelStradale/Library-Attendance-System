@@ -13,10 +13,10 @@
                 class="w-full p-6 bg-white rounded-lg shadow-2xl dark:border md:mt-0 sm:max-w-md dark:bg-gray-800 dark:border-gray-700 sm:p-8">
                 <h1
                     class="mb-1 text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-                    {{ __('Forgot your password?')}}
+                    {{ __('Forgot your password?') }}
                 </h1>
                 <p class="font-light text-gray-500 dark:text-gray-400">
-                    {{ __('Dont fret! Just type in your email and we will send you a code to reset your password!')}}
+                    {{ __('Dont fret! Just type in your email and we will send you a code to reset your password!') }}
                 </p>
 
                 <!-- Status -->
@@ -36,15 +36,16 @@
                     <!-- E-Mail -->
                     <div class="block">
                         <x-label for="email" value="{{ __('Email') }}" />
-                        <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')"
-                            required autofocus autocomplete="username" placeholder="name@company.com" />
+                        <x-input id="email" class="block mt-1 w-full" type="email" name="email"
+                            :value="old('email')" required autofocus autocomplete="username"
+                            placeholder="name@company.com" />
                     </div>
 
                     <!-- Submit -->
                     <div class="mt-4">
                         <x-button class="flex justify-center items-center">
                             {{ __('Email Password Reset Link') }}
-                            <i class="fa-solid fa-paper-plane ml-2"></i>
+                            <i class="fa-solid fa-paper-plane ml-1"></i>
                         </x-button>
                     </div>
                 </form>

@@ -14,11 +14,11 @@ return new class extends Migration {
             $table->increments('id');
             $table->unsignedInteger('assistant_id');
             $table->foreign('assistant_id')->references('id')->on('assistants')->onDelete('cascade');
-            $table->date('attendance_date')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->time('entry_time');
-            $table->time('departure_time')->nullable();
+            $table->date('date')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->time('entrance');
+            $table->time('exit')->nullable();
             $table->integer('total_hours')->nullable();
-            $table->boolean('locker')->nullable();
+            $table->integer('locker_number')->nullable();
             $table->timestamps();
         });
     }

@@ -11,10 +11,10 @@ class Attendance extends Model
 
     protected $fillable = [
         'assistant_id',
-        'attendance_date',
-        'entry_time',
-        'departure_time',
+        'date',
+        'entrance',
+        'exit',
         'total_hours',
-        'locker',
+        'locker_number',
     ];
 }

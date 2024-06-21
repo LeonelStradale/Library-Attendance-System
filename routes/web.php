@@ -5,9 +5,7 @@ use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\LockerController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [AttendanceController::class, 'welcome'])->name('welcome');
 
 Route::middleware([
     'auth:sanctum',
@@ -40,6 +38,14 @@ Route::resource('/attendances', AttendanceController::class);
 Route::get('/entrance', [AttendanceController::class, 'entrance'])->name('entrance');
 
 Route::get('/exit', [AttendanceController::class, 'exit'])->name('exit');
+
+Route::post('/storeEntrance', [AttendanceController::class, 'storeEntrance'])->name('storeEntrance');
+
+Route::delete('/rollbackEntrance/{id}', [AttendanceController::class, 'rollbackEntrance'])->name('rollbackEntrance');
+
+Route::post('/storeExit', [AttendanceController::class, 'storeExit'])->name('storeExit');
+
+Route::delete('/rollbackExit/{id}', [AttendanceController::class, 'rollbackExit'])->name('rollbackExit');
 
 // Lockers
 Route::resource('/lockers', LockerController::class);
