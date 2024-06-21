@@ -118,10 +118,18 @@
                     <th>Mujeres</th>
                 </tr>
                 <tr>
-                    <td>11</td>
-                    <td>07</td>
-                    <td>5</td>
-                    <td>6</td>
+                    <td>
+                        {{ $studentAttendances->totalStudentsVisits }}
+                    </td>
+                    <td>
+                        {{ $studentAttendances->totalStudentsHours }}
+                    </td>
+                    <td>
+                        {{ $studentAttendances->totalStudentsMales }}
+                    </td>
+                    <td>
+                        {{ $studentAttendances->totalStudentsFemales }}
+                    </td>
                 </tr>
             </table>
         </div>

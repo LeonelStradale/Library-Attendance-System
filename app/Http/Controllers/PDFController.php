@@ -41,7 +41,20 @@ class PDFController extends Controller
         // # 2
         $totalHours = Attendance::whereBetween('date', [$dateStartParsed, $dateEndParsed])->sum('total_hours');
 
-        $pdf = PDF::loadView('PDF.general', compact('totalVisits', 'totalHours', 'dateStart', 'dateEnd'));
+        // # 3
+        $studentAttendances = DB::table('attendances')
+            ->join('assistants', 'attendances.assistant_id', '=', 'assistants.id')
+            ->selectRaw('
+        COUNT(*) AS totalStudentsVisits, 
+        SUM(attendances.total_hours) AS totalStudentsHours,
+        SUM(CASE WHEN assistants.gender = "Masculino" THEN 1 ELSE 0 END) AS totalStudentsMales,
+        SUM(CASE WHEN assistants.gender = "Femenino" THEN 1 ELSE 0 END) AS totalStudentsFemales
+            ')
+            ->whereBetween('attendances.date', [$dateStartParsed, $dateEndParsed])
+            ->where('assistants.user_type', 'Estudiante')
+            ->first();
+
+        $pdf = PDF::loadView('PDF.general', compact('totalVisits', 'totalHours', 'dateStart', 'dateEnd', 'studentAttendances'));
 
         return $pdf->download('Reporte General.pdf');
     }

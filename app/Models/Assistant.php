@@ -20,4 +20,9 @@ class Assistant extends Model
         'gender',
         'user_type',
     ];
+
+    public function attendances()
+    {
+        return $this->hasMany(Attendance::class, 'assistant_id');
+    }
 }

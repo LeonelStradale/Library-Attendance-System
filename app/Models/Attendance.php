@@ -17,4 +17,9 @@ class Attendance extends Model
         'total_hours',
         'locker_number',
     ];
+
+    public function assistant()
+    {
+        return $this->belongsTo(Assistant::class, 'assistant_id');
+    }
 }
