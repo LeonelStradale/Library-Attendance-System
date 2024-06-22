@@ -85,7 +85,7 @@
                                 </div>
                             </div>
                         @elseif ($assistant->user_type == 'Docente')
-                            <div class="grid grid-cols-3 gap-4">
+                            <div class="grid grid-cols-3 gap-4 mt-4">
                                 <div>
                                     <!-- Number control -->
                                     <x-label for="number_id" value="{{ __('Number control') }}" />

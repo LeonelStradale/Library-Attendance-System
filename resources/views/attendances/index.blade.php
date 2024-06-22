@@ -147,14 +147,15 @@
                             </p>
 
                             <!-- MODAL: Form -->
-                            <form class="space-y-4 mt-4" action="#">
+                            <form class="space-y-4 mt-4" action="{{ route('reportIndividual') }}" method="GET">
+                                @csrf
+
                                 <div>
-                                    <!-- Key -->
                                     <x-label for="key">
                                         {{ __('Student ID | Control Number | Full Name') }}
                                     </x-label>
                                     <x-input type="text" name="key" id="key" autofocus
-                                        placeholder="482100078" required />
+                                        placeholder="ej. 482100078, 393, Name" required />
                                 </div>
 
                                 <div>

@@ -89,11 +89,13 @@
         <div class="report-section">
             <table>
                 <tr>
-                    <th colspan="2">Total de Visitas y Horas</th>
+                    <th colspan="4">Total de Visitas, Horas y Visitas por Género</th>
                 </tr>
                 <tr>
                     <th>Total de Visitas</th>
                     <th>Total de Horas</th>
+                    <th>Hombres</th>
+                    <th>Mujeres</th>
                 </tr>
                 <tr>
                     <td>
@@ -101,6 +103,12 @@
                     </td>
                     <td>
                         {{ $totalHours }}
+                    </td>
+                    <td>
+                        {{ $totalGenders->totalMales }}
+                    </td>
+                    <td>
+                        {{ $totalGenders->totalFemales }}
                     </td>
                 </tr>
             </table>
@@ -136,23 +144,29 @@
 
         <div class="report-section">
             <table>
-                <tr>
-                    <th colspan="5">Carreras</th>
-                </tr>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Visitas</th>
-                    <th>Horas</th>
-                    <th>Hombres</th>
-                    <th>Mujeres</th>
-                </tr>
-                <tr>
-                    <td>ING TI</td>
-                    <td>11</td>
-                    <td>07</td>
-                    <td>5</td>
-                    <td>6</td>
-                </tr>
+                <thead>
+                    <tr>
+                        <th colspan="5">Carreras</th>
+                    </tr>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Visitas</th>
+                        <th>Horas</th>
+                        <th>Hombres</th>
+                        <th>Mujeres</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($studentCareers as $careers)
+                        <tr>
+                            <td>{{ $careers->careerName }}</td>
+                            <td>{{ $careers->totalCareerVisits }}</td>
+                            <td>{{ $careers->totalCareerHours }}</td>
+                            <td>{{ $careers->totalCareerMales }}</td>
+                            <td>{{ $careers->totalCareerFemales }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
             </table>
         </div>
 
@@ -168,33 +182,47 @@
                     <th>Mujeres</th>
                 </tr>
                 <tr>
-                    <td>11</td>
-                    <td>07</td>
-                    <td>5</td>
-                    <td>6</td>
+                    <td>
+                        {{ $teacherAttendances->totalTeachersVisits }}
+                    </td>
+                    <td>
+                        {{ $teacherAttendances->totalTeachersHours }}
+                    </td>
+                    <td>
+                        {{ $teacherAttendances->totalTeachersMales }}
+                    </td>
+                    <td>
+                        {{ $teacherAttendances->totalTeachersFemales }}
+                    </td>
                 </tr>
             </table>
         </div>
 
         <div class="report-section">
             <table>
-                <tr>
-                    <th colspan="5">Direcciones de Carrera</th>
-                </tr>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Visitas</th>
-                    <th>Horas</th>
-                    <th>Hombres</th>
-                    <th>Mujeres</th>
-                </tr>
-                <tr>
-                    <td>DIC. ING TI</td>
-                    <td>11</td>
-                    <td>07</td>
-                    <td>5</td>
-                    <td>6</td>
-                </tr>
+                <thead>
+                    <tr>
+                        <th colspan="5">Direcciones de Carrera</th>
+                    </tr>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Visitas</th>
+                        <th>Horas</th>
+                        <th>Hombres</th>
+                        <th>Mujeres</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($teacherCareers as $careersDirection)
+                        <tr>
+                            <td>{{ $careersDirection->careerDirectionName }}</td>
+                            <td>{{ $careersDirection->totalCareerDirectionVisits }}</td>
+                            <td>{{ $careersDirection->totalCareerDirectionHours }}</td>
+                            <td>{{ $careersDirection->totalCareerDirectionMales }}</td>
+                            <td>{{ $careersDirection->totalCareerDirectionFemales }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
             </table>
         </div>
 
@@ -210,10 +238,18 @@
                     <th>Mujeres</th>
                 </tr>
                 <tr>
-                    <td>11</td>
-                    <td>07</td>
-                    <td>5</td>
-                    <td>6</td>
+                    <td>
+                        {{ $externalAttendances->totalExternalsVisits }}
+                    </td>
+                    <td>
+                        {{ $externalAttendances->totalExternalsHours }}
+                    </td>
+                    <td>
+                        {{ $externalAttendances->totalExternalsMales }}
+                    </td>
+                    <td>
+                        {{ $externalAttendances->totalExternalsFemales }}
+                    </td>
                 </tr>
             </table>
         </div>
