@@ -45,7 +45,7 @@
                             <!-- Account Management -->
                             <div class="px-4 py-2">
                                 <span class="block text-sm  text-gray-500 truncate dark:text-gray-400">
-                                    {{ __('Manage account') }}
+                                    {{ __('Manage Account') }}
                                 </span>
                             </div>
                             <x-dropdown-link href="{{ route('profile.show') }}">

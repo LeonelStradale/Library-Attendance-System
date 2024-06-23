@@ -1,8 +1,8 @@
 <x-app-layout :breadcrumbs="[
-        [
-            'name' => 'Dashboard',
-        ],
-    ]">
+    [
+        'name' => 'Dashboard',
+    ],
+]">
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div class="bg-white dark:bg-gray-900 rounded-lg shadow-xl p-6 border">

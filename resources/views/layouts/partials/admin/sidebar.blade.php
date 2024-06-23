@@ -9,14 +9,14 @@
         ],
         // Attendances
         [
-            'name' => 'Attendances',
+            'name' => 'Asistencias',
             'icon' => 'fa-solid fa-file-pen',
             'route' => route('attendances.index'),
             'active' => request()->routeIs('attendances.*'),
         ],
         // Assistants
         [
-            'name' => 'Assistants',
+            'name' => 'Asistentes',
             'icon' => 'fa-solid fa-user-group',
             'route' => route('assistants.index'),
             'active' => request()->routeIs('assistants.*'),

@@ -6,7 +6,7 @@
     <div class="flex justify-center items-center mt-16">
 
         <!-- Card -->
-        <div class="block max-w-xl p-6 mx-0 rounded-lg shadow-2xl dark:bg-gray-900 border">
+        <div class="block max-w-md p-6 mx-0 rounded-lg shadow-2xl dark:bg-gray-900 border">
             <h1 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-center">
                 {{ __('Library Assistance') }}
                 <i class="fa-solid fa-book-open-reader ml-1"></i>
@@ -62,7 +62,7 @@
                             <!-- MODAL: Body -->
                             <div class="p-4 md:p-5">
                                 <p class="font-normal text-gray-700 dark:text-gray-400">
-                                    {{ __('To register your entry in the library please enter your student id or control number if you are a teacher. If you do not belong to the university community, access the registration with the "External" button.') }}
+                                    {{ __("To register your entry in the library, enter your student registration or control number if you are a teacher. If you do not belong to the university community, first click on the 'Register external user' button, later you will be able to register your entry.") }}
                                 </p>
 
                                 <!-- MODAL: Form -->
@@ -74,7 +74,7 @@
                                             {{ __('Student ID | Control Number | Full Name') }}
                                         </x-label>
                                         <x-input type="text" name="key" id="key" autofocus
-                                            placeholder="ej. 482100078, 393, Name" required />
+                                            placeholder="ej. 482100078, 393, Nombre Completo" required />
                                     </div>
 
                                     <div>
@@ -140,7 +140,7 @@
                             <div
                                 class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600 bg-gradient-to-br from-pink-500 to-orange-400">
                                 <h3 class="text-xl font-semibold text-white">
-                                    {{ __('Check out') }}
+                                    {{ __('Register exit') }}
                                     <i class="fa-solid fa-door-open ml-2"></i>
                                 </h3>
                                 <button type="button"
@@ -158,7 +158,7 @@
                             <!-- MODAL: Body -->
                             <div class="p-4 md:p-5">
                                 <p class="font-normal text-gray-700 dark:text-gray-400">
-                                    {{ __('To check out of the library, enter your student registration number or Control Number if you are a teacher. If you do not belong to the university community, access the check-out with the "External" Button.') }}
+                                    {{ __('To register your departure from the library, enter your student registration, control number if you are a teacher or full name if you are not part of the university.') }}
                                 </p>
 
                                 <!-- MODAL: Form -->
@@ -170,7 +170,7 @@
                                             {{ __('Student ID | Control Number | Full Name') }}
                                         </x-label>
                                         <x-input type="text" name="key" id="key" autofocus
-                                            placeholder="ej. 482100078, 393, Name" required />
+                                            placeholder="ej. 482100078, 393, Nombre Completo" required />
                                     </div>
 
                                     <!-- MODAL: Submit -->

@@ -4,12 +4,12 @@
         'route' => route('dashboard'),
     ],
     [
-        'name' => 'Attendances',
+        'name' => 'Asistencias',
     ],
 ]">
 
     <x-slot name="action">
-        <div class="w-[345px] flex justify-center items-center">
+        <div class="w-[380px] flex justify-center items-center">
             <!-- GENERAL REPORT: Button -->
             <button data-modal-target="general-report-modal" data-modal-toggle="general-report-modal" type="button"
                 class="focus:outline-none text-white bg-red-700 hover:bg-red-600 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
@@ -45,7 +45,7 @@
                         <!-- MODAL: Body -->
                         <div class="p-4 md:p-5">
                             <p class="font-normal text-gray-700 dark:text-gray-400">
-                                {{ __('To create a general report of library attendance, first choose the date period in which the report will be generated, then click on "Download report" to obtain the PDF file.') }}
+                                {{ __("To create a general library attendance report, first choose the time period in which the report will be generated, then click 'Download Report' to obtain the PDF file.") }}
                             </p>
 
                             <!-- MODAL: Form -->
@@ -70,7 +70,7 @@
                                             <!-- Start Date -->
                                             <input name="start" type="text" required
                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                placeholder="Select date start">
+                                                placeholder="Fecha Inicial">
                                         </div>
 
 
@@ -90,7 +90,7 @@
                                             <!-- End Date -->
                                             <input name="end" type="text" required
                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                placeholder="Select date end">
+                                                placeholder="Fecha Inicial">
                                         </div>
                                     </div>
                                 </div>
@@ -143,7 +143,7 @@
                         <!-- MODAL: Body -->
                         <div class="p-4 md:p-5">
                             <p class="font-normal text-gray-700 dark:text-gray-400">
-                                {{ __("To create an individual library attendance report, first enter the user's registration number, control number or full name, then choose the date period in which the report will be generated, then click 'Download report' to obtain the PDF file.") }}
+                                {{ __("To create an individual library attendance report, first enter the user's license plate, control number or full name, then choose the time period in which the report will be generated, then click 'Download Report' to get the PDF file.") }}
                             </p>
 
                             <!-- MODAL: Form -->
@@ -155,7 +155,7 @@
                                         {{ __('Student ID | Control Number | Full Name') }}
                                     </x-label>
                                     <x-input type="text" name="key" id="key" autofocus
-                                        placeholder="ej. 482100078, 393, Name" required />
+                                        placeholder="ej. 482100078, 393, Nombre Completo" required />
                                 </div>
 
                                 <div>
@@ -176,7 +176,7 @@
                                             <!-- Start Date -->
                                             <input name="start" type="text"
                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                placeholder="Select date start">
+                                                placeholder="Fecha Inicial">
                                         </div>
                                         <span class="mx-4 text-gray-500">
                                             {{ __('to') }}
@@ -194,7 +194,7 @@
                                             <!-- End Date -->
                                             <input name="end" type="text"
                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                placeholder="Select date end">
+                                                placeholder="Fecha Inicial">
                                         </div>
                                     </div>
                                 </div>
@@ -295,7 +295,7 @@
                                     {{ __('There are no lockers available') }}
                                 @else
                                     {{ $numberLockersAvailable }}
-                                    {{ __('lockers available') }}
+                                    {{ __('Lockers available') }}
                                 @endif
                                 <i class="fa-solid fa-lock-open ml-1"></i>
                             </p>
