@@ -16,7 +16,7 @@
                     {{ __('Forgot your password?') }}
                 </h1>
                 <p class="font-light text-gray-500 dark:text-gray-400">
-                    {{ __('Dont fret! Just type in your email and we will send you a code to reset your password!') }}
+                    {{ __("Don't worry! Simply enter your email and we'll send you a code to reset your password!") }}
                 </p>
 
                 <!-- Status -->
@@ -38,7 +38,7 @@
                         <x-label for="email" value="{{ __('Email') }}" />
                         <x-input id="email" class="block mt-1 w-full" type="email" name="email"
                             :value="old('email')" required autofocus autocomplete="username"
-                            placeholder="name@company.com" />
+                            placeholder="ej. nombre@compañia.com" />
                     </div>
 
                     <!-- Submit -->

@@ -4,7 +4,7 @@
         'route' => route('dashboard'),
     ],
     [
-        'name' => 'Assistants',
+        'name' => 'Asistentes',
     ],
 ]">
 
@@ -55,7 +55,7 @@
                                     {{ __('Student ID | Control Number | Full Name') }}
                                 </x-label>
                                 <x-input type="text" name="key" id="key" autofocus
-                                    placeholder="ej. 482100078, 393, Name" required />
+                                    placeholder="ej. 482100078, 393, Nombre Completo" required />
                             </div>
 
                             <!-- MODAL: Submit -->

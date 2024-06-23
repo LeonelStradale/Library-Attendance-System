@@ -8,7 +8,7 @@
         'route' => route('lockers.index'),
     ],
     [
-        'name' => 'Locker information',
+        'name' => 'Información del Locker',
     ],
 ]">
 

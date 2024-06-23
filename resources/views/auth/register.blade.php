@@ -37,14 +37,15 @@
                             <x-label for="name" value="{{ __('Name') }}" />
                             <x-input id="name" class="block mt-1 w-full" type="text" name="name"
                                 :value="old('name')" required autofocus autocomplete="first-name"
-                                placeholder="Enter your full name" />
+                                placeholder="Nombre Completo" />
                         </div>
 
                         <!-- E-Mail -->
                         <div class="mt-4">
                             <x-label for="email" value="{{ __('Email') }}" />
                             <x-input id="email" class="block mt-1 w-full" type="email" name="email"
-                                :value="old('email')" required autocomplete="username" placeholder="name@company.com" />
+                                :value="old('email')" required autocomplete="username"
+                                placeholder="ej. nombre@compañia.com" />
                         </div>
 
                         <div

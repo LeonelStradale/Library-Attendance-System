@@ -11,11 +11,11 @@
         'route' => route('dashboard'),
     ],
     [
-        'name' => 'Assistants',
+        'name' => 'Asistentes',
         'route' => route('assistants.index'),
     ],
     [
-        'name' => 'Editing user information',
+        'name' => 'Editar información del usuario',
     ],
 ]">
 
@@ -34,7 +34,7 @@
                 <i class="fa-solid fa-pen-to-square ml-1"></i>
 
                 <p class="text-sm font-light text-gray-500 dark:text-gray-400">
-                    {{ __("If you wish, you can modify the user's data") }}
+                    {{ __("If you wish, you can modify the user's data.") }}
                     <i class="fa-solid fa-circle-info ml-1"></i>
                 </p>
             </h1>
@@ -53,21 +53,21 @@
                         <x-label for="first_name" value="{{ __('First name') }}" />
                         <x-input id="first_name" class="block mt-1 w-full" type="text" name="first_name"
                             value="{{ old('first_name', $assistant->first_name) }}" required autofocus
-                            autocomplete="first-name" placeholder="Enter the first name" />
+                            autocomplete="first-name" placeholder="Nombre(s)" />
                     </div>
                     <!-- Paternal Last Name -->
                     <div>
                         <x-label for="paternal_surname" value="{{ __('Paternal last name') }}" />
                         <x-input id="paternal_surname" class="block mt-1 w-full" type="text" name="paternal_surname"
                             value="{{ old('paternal_surname', $assistant->paternal_surname) }}" required
-                            autocomplete="paternal_surname" placeholder="Enter the paternal last name" />
+                            autocomplete="paternal_surname" placeholder="Apellido paterno" />
                     </div>
                     <!-- Maternal Last Name -->
                     <div>
                         <x-label for="maternal_surname" value="{{ __('Maternal last name') }}" />
                         <x-input id="maternal_surname" class="block mt-1 w-full" type="text" name="maternal_surname"
                             value="{{ old('maternal_surname', $assistant->maternal_surname) }}" required
-                            autocomplete="maternal_surname" placeholder="Enter the maternal last name" />
+                            autocomplete="maternal_surname" placeholder="Apellido materno" />
                     </div>
                 </div>
 
@@ -78,7 +78,7 @@
                             <x-label for="number_id" value="{{ __('Student ID') }}" />
                             <x-input id="number_id" class="block mt-1 w-full" type="number" name="number_id"
                                 value="{{ old('number_id', $assistant->number_id) }}" autocomplete="number_id"
-                                placeholder="Enter the student id" />
+                                placeholder="Matrícula" />
                         </div>
                         <!-- Grade -->
                         <div>
@@ -86,7 +86,7 @@
                             <select id="grade" name="grade"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                 <option selected disabled>
-                                    {{ __('Choose a grade') }}
+                                    {{ __('Escoge un grado') }}
                                 </option>
                                 @foreach (Grade::cases() as $grade)
                                     <option value="{{ $grade->value }}"
@@ -101,7 +101,7 @@
                             <x-label for="area" value="{{ __('Area') }}" />
                             <x-input id="area" class="block mt-1 w-full" type="text" name="area"
                                 value="{{ old('area', $assistant->area) }}" required autocomplete="area"
-                                placeholder="Enter the area" />
+                                placeholder="Área" />
                         </div>
                         <!-- Gender -->
                         <div>
@@ -109,7 +109,7 @@
                             <select id="gender" name="gender"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                 <option selected disabled>
-                                    {{ __('Choose a gender') }}
+                                    {{ __('Escoge un género') }}
                                 </option>
                                 @foreach (Gender::cases() as $gender)
                                     <option value="{{ $gender->value }}"
@@ -125,7 +125,7 @@
                         <x-label for="career" value="{{ __('Select a career') }}" />
                         <select id="career" name="career"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                            <option disabled>{{ __('Choose a career') }}</option>
+                            <option disabled>{{ __('Escoge una carrera') }}</option>
                             @foreach (Career::cases() as $career)
                                 <option value="{{ $career->value }}"
                                     {{ $assistant->career === $career->value ? 'selected' : '' }}>
@@ -141,14 +141,14 @@
                             <x-label for="number_id" value="{{ __('Number control') }}" />
                             <x-input id="number_id" class="block mt-1 w-full" type="number" name="number_id"
                                 value="{{ old('number_id', $assistant->number_id) }}" required autocomplete="number_id"
-                                placeholder="Enter the number control" />
+                                placeholder="Número de control" />
                         </div>
                         <div class="col-span-2">
                             <!-- Career direction -->
                             <x-label for="career" value="{{ __('Select a career direction') }}" />
                             <select id="career" name="career"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                <option selected disabled>{{ __('Choose a career direction') }}</option>
+                                <option selected disabled>{{ __('Escoge una dirección de carrera') }}</option>
                                 @foreach (CareerDirection::cases() as $career)
                                     <option value="{{ $career->value }}"
                                         {{ $assistant->career === $career->value ? 'selected' : '' }}>
@@ -163,7 +163,7 @@
                             <select id="gender" name="gender"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                 <option selected disabled>
-                                    {{ __('Choose a gender') }}
+                                    {{ __('Escoge un género') }}
                                 </option>
                                 @foreach (Gender::cases() as $gender)
                                     <option value="{{ $gender->value }}"
@@ -183,7 +183,7 @@
                         <select id="gender" name="gender"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                             <option selected disabled>
-                                {{ __('Choose a gender') }}
+                                {{ __('Escoge un género') }}
                             </option>
                             @foreach (Gender::cases() as $gender)
                                 <option value="{{ $gender->value }}"

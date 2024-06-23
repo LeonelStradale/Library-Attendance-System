@@ -4,11 +4,11 @@
         'route' => route('dashboard'),
     ],
     [
-        'name' => 'Assistants',
+        'name' => 'Asistentes',
         'route' => route('assistants.index'),
     ],
     [
-        'name' => 'User information',
+        'name' => 'Información del usuario',
     ],
 ]">
 

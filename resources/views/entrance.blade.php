@@ -131,7 +131,7 @@
                             <div class="ml-4">
                                 <div class="bg-green-600 rounded-lg p-3">
                                     <h1 class="font-bold text-white">
-                                        {{ __('Locker number') }}
+                                        Locker
                                         <i class="fa-solid fa-lock ml-1"></i>
                                     </h1>
                                     <div class="flex justify-center">

@@ -25,7 +25,7 @@
                             <x-label for="email" value="{{ __('Email') }}" />
                             <x-input id="email" class="block mt-1 w-full" type="email" name="email"
                                 :value="old('email')" required autofocus autocomplete="username"
-                                placeholder="name@company.com" />
+                                placeholder="ej. nombre@compañia.com" />
                         </div>
 
                         <!-- Password -->
@@ -65,7 +65,7 @@
 
                         <!-- Sign up -->
                         <p class="text-center text-sm font-light text-gray-500 dark:text-gray-400">
-                            {{ __('Don’t have an account yet?') }}
+                            {{ __("Don't have an account yet?") }}
                             <a href="{{ route('register') }}"
                                 class="font-medium text-primary-600 hover:underline dark:text-primary-500">
                                 {{ __('Sign up') }}
