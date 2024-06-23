@@ -14,7 +14,8 @@
                     </svg>
                 </button>
                 <a href="/" class="flex ms-2 md:me-24">
-                    <img src="https://cdn-icons-png.flaticon.com/512/12626/12626844.png" class="h-8 me-3" alt="Logo" />
+                    <img src="https://cdn-icons-png.flaticon.com/512/12626/12626844.png" class="h-8 me-3"
+                        alt="Logo" />
                     <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">
                         {{ config('app.name', 'Laravel') }}
                     </span>
@@ -49,8 +50,8 @@
                                     <button type="button"
                                         class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none focus:bg-gray-50 dark:focus:bg-gray-700 active:bg-gray-50 dark:active:bg-gray-700 transition ease-in-out duration-150">
                                         {{ Auth::user()->name }}.
-                                        <svg class="ms-2 -me-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                        <svg class="ms-2 -me-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                            fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round"
                                                 d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                                         </svg>
@@ -60,31 +61,27 @@
                         </x-slot>
                         <x-slot name="content">
                             <!-- Account Management -->
-                            <div class="px-4 py-3">
-                                <span class="block text-sm text-gray-900 truncate dark:text-white">
-                                    {{ Auth::user()->name }}
-                                </span>
+                            <div class="px-4 py-2">
                                 <span class="block text-sm  text-gray-500 truncate dark:text-gray-400">
-                                    {{ Auth::user()->email }}
+                                    {{ __('Manage account') }}
                                 </span>
                             </div>
-                            <div class="border-t border-gray-200 dark:border-gray-600">
-                                <x-dropdown-link href="{{ route('profile.show') }}">
-                                    {{ __('Profile') }}
+                            <x-dropdown-link href="{{ route('profile.show') }}">
+                                {{ __('Profile') }}
+                            </x-dropdown-link>
+                            @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
+                                <x-dropdown-link href="{{ route('api-tokens.index') }}">
+                                    {{ __('API Tokens') }}
                                 </x-dropdown-link>
-                                @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
-                                    <x-dropdown-link href="{{ route('api-tokens.index') }}">
-                                        {{ __('API Tokens') }}
-                                    </x-dropdown-link>
-                                @endif
-                                <div class="border-t border-gray-200 dark:border-gray-600"></div>
-                                <!-- Authentication -->
-                                <form method="POST" action="{{ route('logout') }}" x-data>
-                                    @csrf
-                                    <x-dropdown-link href="{{ route('logout') }}" @click.prevent="$root.submit();">
-                                        {{ __('Log Out') }}
-                                    </x-dropdown-link>
-                                </form>
+                            @endif
+                            <div class="border-t border-gray-200 dark:border-gray-600"></div>
+                            <!-- Authentication -->
+                            <form method="POST" action="{{ route('logout') }}" x-data>
+                                @csrf
+                                <x-dropdown-link href="{{ route('logout') }}" @click.prevent="$root.submit();">
+                                    {{ __('Log Out') }}
+                                </x-dropdown-link>
+                            </form>
                         </x-slot>
                     </x-dropdown>
                 </div>
@@ -100,7 +97,7 @@
 
         // Change the icons inside the button based on previous settings
         if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia(
-            '(prefers-color-scheme: dark)').matches)) {
+                '(prefers-color-scheme: dark)').matches)) {
             themeToggleLightIcon.classList.remove('hidden');
         } else {
             themeToggleDarkIcon.classList.remove('hidden');
@@ -108,7 +105,7 @@
 
         var themeToggleBtn = document.getElementById('theme-toggle');
 
-        themeToggleBtn.addEventListener('click', function () {
+        themeToggleBtn.addEventListener('click', function() {
 
             // toggle icons inside button
             themeToggleDarkIcon.classList.toggle('hidden');
