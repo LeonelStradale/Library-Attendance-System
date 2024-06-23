@@ -12,9 +12,17 @@ class AssistantController extends Controller
      */
     public function index()
     {
-        $assistants = Assistant::orderBy('id', 'asc')->paginate(10);
+        $assistants = Assistant::orderByRaw("
+            CASE 
+                WHEN user_type = 'Estudiante' THEN 1 
+                WHEN user_type = 'Docente' THEN 2 
+                WHEN user_type = 'Externo' THEN 3 
+                ELSE 4 
+            END
+        ")->orderBy('id', 'asc')->paginate(10);
 
         return view('assistants.index', compact('assistants'));
+
     }
 
     /**
@@ -153,6 +161,48 @@ class AssistantController extends Controller
         ]);
 
         return redirect()->route('assistants.show', $assistant->id);
+    }
+
+    /*
+        Show the record view for external people
+    */
+    public function createExternalPeople()
+    {
+        return view('createExternalPeople');
+    }
+
+    /*
+        External registration function
+    */
+    public function storeExternalPeople(Request $request)
+    {
+        $request->validate([
+            'first_name' => 'required|string|max:255',
+            'paternal_surname' => 'required|string|max:255',
+            'maternal_surname' => 'nullable|string|max:255',
+            'gender' => 'required|string',
+        ]);
+
+        $firstName = strtoupper($request->first_name);
+        $paternalSurname = strtoupper($request->paternal_surname);
+        $maternalSurname = strtoupper($request->maternal_surname);
+
+        $assistant = new Assistant();
+        $assistant->first_name = $firstName;
+        $assistant->paternal_surname = $paternalSurname;
+        $assistant->maternal_surname = $maternalSurname;
+        $assistant->gender = $request->gender;
+        $assistant->user_type = 'Externo';
+
+        $assistant->save();
+
+        session()->flash('swal', [
+            'icon' => 'success',
+            'title' => '¡Éxito!',
+            'text' => 'Te has registrado correctamente, ya puedes hacer tu registro de asistencia en la biblioteca.'
+        ]);
+
+        return redirect()->route('welcome');
     }
 
     /**

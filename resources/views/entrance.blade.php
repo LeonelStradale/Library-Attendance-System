@@ -49,7 +49,7 @@
                                     <span
                                         class="bg-pink-100 text-pink-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-pink-900 dark:text-pink-300">
                                         {{ $assistant->user_type }}
-                                        <i class="fa-solid fa-user ml-1"></i>
+                                        <i class="fa-solid fa-user ml-1 mb-3"></i>
                                     </span>
                                 @endif
                             </p>
@@ -85,7 +85,7 @@
                                 </div>
                             </div>
                         @elseif ($assistant->user_type == 'Docente')
-                            <div class="grid grid-cols-3 gap-4">
+                            <div class="grid grid-cols-3 gap-4 mt-4">
                                 <div>
                                     <!-- Number control -->
                                     <x-label for="number_id" value="{{ __('Number control') }}" />
@@ -107,7 +107,7 @@
             <div>
                 <!-- Card: Entrance -->
                 <div
-                    class="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-2xl mb-7">
+                    class="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-2xl mb-7 min-[136px]:">
                     <h5
                         class="text-base text-white text-center rounded-t-lg font-semibold tracking-tight p-2 dark:text-white bg-green-700">
                         {{ __('Check-in information') }}
@@ -115,7 +115,7 @@
                     </h5>
 
                     <div class="flex justify-center items-center text-center p-3">
-                        <div class="mr-4">
+                        <div class="p-2.5">
                             <h3 class="text-3xl font-bold dark:text-white">
                                 {{ \Carbon\Carbon::now('GMT-6')->format('d') }}
                                 {{ \Carbon\Carbon::now('GMT-6')->format('F') }}
@@ -128,7 +128,7 @@
                         </div>
 
                         @if ($newAttendance->locker_number)
-                            <div>
+                            <div class="ml-4">
                                 <div class="bg-green-600 rounded-lg p-3">
                                     <h1 class="font-bold text-white">
                                         {{ __('Locker number') }}

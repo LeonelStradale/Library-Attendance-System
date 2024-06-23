@@ -121,10 +121,6 @@
                 <thead class="text-xs text-white uppercase bg-primary-500 dark:bg-primary-700">
                     <tr>
                         <th scope="col" class="px-6 py-3">
-                            {{ __('Number') }}
-                            <i class="fa-solid fa-hashtag ml-1"></i>
-                        </th>
-                        <th scope="col" class="px-6 py-3">
                             {{ __('Key') }}
                             <i class="fa-solid fa-address-card ml-1"></i>
                         </th>
@@ -146,10 +142,6 @@
                     @foreach ($assistants as $assistant)
                         <tr
                             class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600">
-                            <th scope="row"
-                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                {{ $assistant->id }}
-                            </th>
                             <td class="px-6 py-4">
                                 @if ($assistant->user_type == 'Externo')
                                     {{ __('EXT') }}

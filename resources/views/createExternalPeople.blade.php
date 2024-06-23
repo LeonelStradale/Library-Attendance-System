@@ -8,11 +8,6 @@
 
     <div class="py-8 px-4 mx-auto max-w-screen-xl">
 
-        {{-- <div class="w-full flex justify-end mb-5">
-            
-        </div> --}}
-
-
         <!-- Card: User info -->
         <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-2xl mb-8">
             <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
@@ -30,7 +25,7 @@
                 <x-validation-errors class="mb-4" />
 
                 <!-- Form -->
-                <form method="POST" action="{{ route('assistants.store') }}">
+                <form method="POST" action="{{ route('assistants.storeExternalPeople') }}">
                     @csrf
 
                     <div class="grid grid-cols-3 gap-4">

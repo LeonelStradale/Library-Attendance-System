@@ -29,7 +29,9 @@ Route::get('/assistants.createExternal', [AssistantController::class, 'createExt
 
 Route::post('assistants/storeExternal', [AssistantController::class, 'storeExternal'])->name('assistants.storeExternal');
 
-Route::get('/createExternalPeople', [AttendanceController::class, 'createExternalPeople'])->name('assistants.createExternalPeople');
+Route::get('/createExternalPeople', [AssistantController::class, 'createExternalPeople'])->name('assistants.createExternalPeople');
+
+Route::post('/storeExternalPeople', [AssistantController::class, 'storeExternalPeople'])->name('assistants.storeExternalPeople');
 
 Route::post('/assistants/search-user', [AssistantController::class, 'searchUser'])->name('assistants.searchUser');
 

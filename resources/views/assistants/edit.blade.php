@@ -176,6 +176,25 @@
                     </div>
                 @endif
 
+                @if ($assistant->user_type == 'Externo')
+                    <!-- Gender -->
+                    <div class="mt-4">
+                        <x-label for="gender" value="{{ __('Select a gender') }}" />
+                        <select id="gender" name="gender"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <option selected disabled>
+                                {{ __('Choose a gender') }}
+                            </option>
+                            @foreach (Gender::cases() as $gender)
+                                <option value="{{ $gender->value }}"
+                                    {{ $assistant->gender === $gender->value ? 'selected' : '' }}>
+                                    {{ $gender->value }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                @endif
+
                 <!-- Submit -->
                 <x-button class="flex justify-center items-center mt-8">
                     {{ __('Update') }}

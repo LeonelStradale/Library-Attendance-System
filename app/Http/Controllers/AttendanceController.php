@@ -62,14 +62,6 @@ class AttendanceController extends Controller
     }
 
     /*
-        Show the record view for external people
-    */
-    public function createExternalPeople()
-    {
-        return view('createExternalPeople');
-    }
-
-    /*
         Shows the entry view with attendance information
     */
     public function entrance(Assistant $assistant)
