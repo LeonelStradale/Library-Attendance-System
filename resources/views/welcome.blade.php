@@ -200,7 +200,7 @@
         <span
             class="px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0 text-base font-bold">
             {{ __('About') }}
-            <i class="fa-solid fa-person-walking-arrow-right ml-1"></i>
+            <i class="fa-solid fa-circle-info ml-1"></i>
         </span>
     </button>
 
@@ -211,11 +211,10 @@
             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
 
                 <!-- MODAL: Header -->
-                <div
-                    class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600 bg-gradient-to-br from-purple-600 to-blue-500">
+                <div class="flex items-center justify-between p-4 md:p-5 rounded-t dark:border-gray-600">
                     <h3 class="text-xl font-semibold text-white">
-                        {{ __('Register entry') }}
-                        <i class="fa-solid fa-person-walking-arrow-right ml-1"></i>
+                        {{ __('About') }}
+                        <i class="fa-solid fa-circle-info ml-1"></i>
                     </h3>
                     <button type="button"
                         class="end-2.5 text-gray-200 hover:text-gray-300 bg-transparent rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
@@ -230,61 +229,26 @@
                 </div>
 
                 <!-- MODAL: Body -->
-                <div class="p-4 md:p-5">
-                    <p class="font-normal text-gray-700 dark:text-gray-400">
-                        {{ __("To register your entry in the library, enter your student registration or control number if you are a teacher. If you do not belong to the university community, first click on the 'Register external user' button, later you will be able to register your entry.") }}
+                <div class="p-5">
+                    <div class="text-center mx-0">
+                        <h4 class="text-lg font-semibold text-gray-900 dark:text-gray-200">
+                            {{ __('Library Attendance System') }}
+                        </h4>
+                        <p class="text-sm text-gray-700 dark:text-gray-400 mt-2">
+                            {{ __('Developed by') }}
+                        </p>
+                        <img src="{{ asset('assets/img/logo.png') }}" width="150px" height="150px"
+                            class="mb-4 mx-auto">
+                    </div>
+                    <h4 class="text-lg font-semibold text-gray-900 dark:text-gray-200 mt-6 text-center">
+                        {{ __('Contact us') }}
+                    </h4>
+                    <p class="text-sm text-gray-700 dark:text-gray-400 mt-2 text-center">
+                        <strong>{{ __('Email') }}:</strong> 48210078@alumnos.utzac.edu.mx
                     </p>
-
-                    <!-- MODAL: Form -->
-                    <form class="space-y-4 mt-8" action="{{ route('storeEntrance') }}" method="POST">
-                        @csrf
-
-                        <div>
-                            <x-label for="key">
-                                {{ __('Student ID | Control Number | Full Name') }}
-                            </x-label>
-                            <x-input type="text" name="key" id="key" autofocus
-                                placeholder="ej. 482100078, 393, Nombre Completo" required />
-                        </div>
-
-                        <div>
-                            <x-label>
-                                {{ __('Do you want to request a locker?') }}
-                            </x-label>
-                            <div class="mt-2">
-                                <div class="flex items-center me-4">
-                                    <input id="locker_yes" name="request_locker" type="checkbox" value="yes"
-                                        onclick="toggleCheckbox('locker_no')"
-                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                    <label for="locker_yes"
-                                        class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                                        {{ __('Yes, request a locker') }}
-                                    </label>
-
-                                    <input checked id="locker_no" name="request_locker" type="checkbox"
-                                        value="no" onclick="toggleCheckbox('locker_yes')"
-                                        class="ml-4 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                    <label for="locker_no"
-                                        class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                                        {{ __('No, thanks') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MODAL: Submit -->
-                        <button type="submit"
-                            class="w-full text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
-                            {{ __('Find user') }}
-                            <i class="fa-solid fa-magnifying-glass ml-1"></i>
-                        </button>
-
-                        <a href="{{ route('assistants.createExternalPeople') }}"
-                            class="block text-white bg-gradient-to-br from-gray-600 to-gray-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-gray-300 dark:focus:ring-gray-600 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
-                            {{ __('Register external user') }}
-                            <i class="fa-solid fa-user ml-1"></i>
-                        </a>
-                    </form>
+                    <p class="text-sm text-gray-700 dark:text-gray-400 mt-2 text-center">
+                        <strong>{{ __('Phone') }}:</strong> 4922951793
+                    </p>
                 </div>
             </div>
         </div>
