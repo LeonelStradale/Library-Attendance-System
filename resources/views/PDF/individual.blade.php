@@ -143,13 +143,14 @@
             <table>
                 <thead>
                     <tr>
-                        <th colspan="4">Historial de Asistencias</th>
+                        <th colspan="5">Historial de Asistencias</th>
                     </tr>
                     <tr>
                         <th>Fecha</th>
                         <th>Entrada</th>
                         <th>Salida</th>
                         <th>Total de Horas</th>
+                        <th>Número de Locker</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -159,6 +160,15 @@
                             <td>{{ $attendance->entrance }}</td>
                             <td>{{ $attendance->exit }}</td>
                             <td>{{ $attendance->total_hours }}</td>
+                            @if ($attendance->locker_number == null)
+                            <td>
+                                No solicito
+                            </td>
+                            @else
+                                <td>
+                                    {{ $attendance->locker_number }}
+                                </td>
+                            @endif
                         </tr>
                     @endforeach
                 </tbody>

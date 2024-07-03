@@ -207,7 +207,7 @@ class PDFController extends Controller
 
         // # 2
         $attendances = DB::table('attendances')
-            ->select('date', 'entrance', 'exit', 'total_hours')
+            ->select('date', 'entrance', 'exit', 'total_hours', 'locker_number')
             ->where('assistant_id', $assistant->id)
             ->whereBetween('date', [$dateStartParsed, $dateEndParsed])
             ->get();

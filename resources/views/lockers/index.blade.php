@@ -56,7 +56,7 @@
                                     <span
                                         class="bg-red-100 text-red-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">
                                         {{ $locker->availability }}
-                                        <i class="fa-solid fa-lock-open ml-1"></i>
+                                        <i class="fa-solid fa-lock ml-1"></i>
                                     </span>
                                 @elseif($locker->availability == 'No Disponible')
                                     <!-- Not Available Badge -->
